@@ -1,0 +1,60 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+/* template  zettai ni change shinaide kudasai */
+.template-color-sample{
+color:#FBF0B2;
+color:#F2CFEE;
+}
+body {
+  background-color: #FBF0B2;
+  font-family: 'DotGothic16' ,sans-serif;
+  border: #F2CFEE;
+}
+input[type='text']{
+  font-family: 'DotGothic16' ,sans-serif;
+  box-sizing: border-box;
+	padding: 0.3em;
+	border-radius: 30px;
+  border-color: #F2CFEE;
+	text-align: center;
+	background: #FFFFFF;
+	box-align: center;
+}
+input[type='text']:focus{
+  font-family: 'DotGothic16' ,sans-serif;
+  border-color: #F2CFEE;
+  background: #F2CFEE;
+}
+input[type='password']{
+  font-family: 'DotGothic16' ,sans-serif;
+  box-sizing: border-box;
+	padding: 0.3em;
+	border-radius: 30px;
+  border-color: #F2CFEE;
+	text-align: center;
+	background: #FFFFFF;
+	box-align: center;
+}
+input[type='password']:focus{
+  font-family: 'DotGothic16' ,sans-serif;
+  border-color: #F2CFEE;
+  background: #F2CFEE;
+}
+input[type="submit"]{
+  font-family: 'DotGothic16' ,sans-serif;
+  padding:0.3em;
+  border-radius: 10px;
+  border-color: #F2CFEE;
+  background-color: #F2CFEE; 
+}
+
+/* hedder */
+
+/* body */
+
+/* main */
+
+/* footer */
+
+/* other */
