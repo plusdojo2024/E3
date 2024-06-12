@@ -1,0 +1,79 @@
+org.h2.Driver
+
+jdbc:h2:file:C:/pleiades/workspace/data/E3
+sa
+""
+
+/* IDPW テーブルを作成する SQL 文 */
+CREATE TABLE USERS (
+ id             INTEGER                 AUTO_INCREMENT(0),
+ user_id        VARCHAR(20)             NOT NULL,
+ password       VARCHAR(20)             NOT NULL,
+ user_name      VARCHAR(100)            NOT NULL,
+ height         DOUBLE                  NOT NULL,
+ weight         DOUBLE                  NOT NULL,
+ gender         INTEGER                 NOT NULL,
+ goal_weight    DOUBLE                  NOT NULL,
+ cat            VARCHAR(100)            ,
+ sum_calories   DOUBLE                  ,
+ PRIMARY KEY (id)
+);
+
+/* USERS テーブルにテスト用のデータを登録する SQL 文 */
+INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat, sum_calories) 
+VALUES (NULL, 'hyogo_satou', 'password', 'さとうはなこ', 160.0, 50.0, 2, 48.0, 'たま', NULL);
+
+/*無し*/
+INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat, sum_calories) 
+VALUES (NULL, 'tokyo_tanaka', 'pw', 'たなかたろう', 170.0, 75.0, 1, 65.0, 'みけ', NULL);
+
+
+--CALORIESテーブルを作成するSQL文
+CREATE TABLE CALORIES (
+ID       INTEGER    AUTO_INCREMENT,         /* ID */
+EX_ID    INTEGER    NOT NULL,                /* 運動ID */
+CALORIE  DOUBLE     NOT NULL,                /* 消費カロリー */
+DAYS     TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日時 */
+PRIMARY KEY (ID)
+);
+
+--BCテーブルにテスト用のデータを登録するSQL文1
+INSERT INTO CALORIES(EX_ID, CALORIE) VALUES (
+1,
+3.5
+);
+
+/* EXERCISES テーブルを作成する SQL 文 */
+ CREATE TABLE EXERCISES (
+ ex_ID          INTEGER       ,         /* 運動ID */
+ exercise_name  VARCHAR(10)   ,         /* 運動項目 */
+ mets           DOUBLE        ,         /* メッツ */
+ PRIMARY KEY (ex_ID)
+);
+
+/* BC テーブルにテスト用のデータを登録する SQL 文 */
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (0, 'ストレッチング' ,2.3);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (1, '自重筋力トレーニング', 3.5);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (2, 'ラジオ体操' ,4.0);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (3, '階段の上り下り' ,5.5);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (4, 'ウェイトトレーニング' ,6.0);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (5, 'サイクリング' ,8.0);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (6, 'ランニング' ,10.0);
+
+INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
+ VALUES (7, 'おさんぽ' ,3.5);
+
+
