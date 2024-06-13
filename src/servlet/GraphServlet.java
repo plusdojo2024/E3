@@ -36,6 +36,10 @@ public class GraphServlet extends HttpServlet {
 					return;
 				}
 		
+		//ヘッダーに表示するユーザー氏名を取得する
+				request.setCharacterEncoding("UTF-8");
+				String user_name = request.getParameter("user_name");
+				
 		// 活動記録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 			dispatcher.forward(request, response);

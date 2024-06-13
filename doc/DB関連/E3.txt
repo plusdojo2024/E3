@@ -9,39 +9,58 @@ CREATE TABLE USERS (
  id             INTEGER                 AUTO_INCREMENT(0),
  user_id        VARCHAR(20)             NOT NULL,
  password       VARCHAR(20)             NOT NULL,
- user_name      VARCHAR(100)            NOT NULL,
- height         DOUBLE                  NOT NULL,
- weight         DOUBLE                  NOT NULL,
- gender         INTEGER                 NOT NULL,
- goal_weight    DOUBLE                  NOT NULL,
+ user_name      VARCHAR(100)            ,
+ height         DOUBLE                  ,
+ weight         DOUBLE                  ,
+ gender         INTEGER                 ,
+ goal_weight    DOUBLE                  ,
  cat            VARCHAR(100)            ,
- sum_calories   DOUBLE                  ,
  PRIMARY KEY (id)
 );
 
 /* USERS テーブルにテスト用のデータを登録する SQL 文 */
-INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat, sum_calories) 
-VALUES (NULL, 'hyogo_satou', 'password', 'さとうはなこ', 160.0, 50.0, 2, 48.0, 'たま', NULL);
+INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat) 
+VALUES (NULL, 'hyogo_satou', 'password', 'さとうはなこ', 160.0, 50.0, 2, 48.0, 'たま');
 
-/*無し*/
-INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat, sum_calories) 
-VALUES (NULL, 'tokyo_tanaka', 'pw', 'たなかたろう', 170.0, 75.0, 1, 65.0, 'みけ', NULL);
+
+INSERT INTO USERS (id, user_id, password, user_name, height, weight, gender, goal_weight, cat) 
+VALUES (NULL, 'tokyo_tanaka', 'pw', 'たなかたろう', 170.0, 75.0, 1, 65.0, 'みけ');
 
 
 --CALORIESテーブルを作成するSQL文
 CREATE TABLE CALORIES (
-ID       INTEGER    AUTO_INCREMENT,         /* ID */
-EX_ID    INTEGER    NOT NULL,                /* 運動ID */
-CALORIE  DOUBLE     NOT NULL,                /* 消費カロリー */
-DAYS     TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日時 */
+ID       INTEGER     AUTO_INCREMENT,         /* ID */
+USER_ID  VARCHAR(20) NOT NULL,               /*USERID*/
+EX_ID    INTEGER     NOT NULL,                /* 運動ID */
+CALORIE  DOUBLE      NOT NULL,                /* 消費カロリー */
+DAYS     TIMESTAMP   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日時 */
 PRIMARY KEY (ID)
 );
 
 --BCテーブルにテスト用のデータを登録するSQL文1
-INSERT INTO CALORIES(EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+'hyogo_satou',
 1,
-3.5
+100
 );
+
+INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+'tokyo_tanaka',
+4,
+200
+);
+
+INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+'hyogo_satou',
+7,
+120
+)
+
+INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+'tokyo_tanaka',
+5,
+50
+)
 
 /* EXERCISES テーブルを作成する SQL 文 */
  CREATE TABLE EXERCISES (
@@ -77,3 +96,18 @@ INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
  VALUES (7, 'おさんぽ' ,3.5);
 
 
+/* 総消費カロリーのテーブルを作成するSQL文 */
+ CREATE TABLE SUMCALORIES (
+ user_id        VARCHAR(20) ,         /* ユーザーID */
+ sum_calorie    DOUBLE      ,         /* 総消費カロリー */
+ PRIMARY KEY (user_id)
+);
+
+INSERT INTO SUMCALORIES(user_id, sum_calorie)
+
+
+CREATE TABLE SUMCALORIES (user_id, sum_calorie)
+AS
+SELECT user_id, SUM(calorie)
+FROM CALORIES
+GROUP BY user_id;
