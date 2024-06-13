@@ -58,7 +58,7 @@ public class WalkServlet extends HttpServlet {
 		}*/
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/walking.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Main.jsp");
 		dispatcher.forward(request, response);
 	}
 
