@@ -1,0 +1,40 @@
+@charset "UTF-8";
+body {
+    background-color: #FFF0BC;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.header img {
+    height: 50px;
+}
+.title {
+    font-size: 24px;
+}
+.map-container {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.info {
+    font-size: 18px;
+    text-align: left;
+    margin: 0 20px;
+}
