@@ -31,7 +31,6 @@ VALUES (NULL, 'tokyo_tanaka', 'pw', 'たなかたろう', 170.0, 75.0, 1, 65.0, 
 CREATE TABLE CALORIES (
 ID       INTEGER     AUTO_INCREMENT,         /* ID */
 USER_ID  VARCHAR(20) NOT NULL,               /*USERID*/
-EX_ID    INTEGER     NOT NULL,                /* 運動ID */
 CALORIE  DOUBLE      NOT NULL,                /* 消費カロリー */
 DAYS     TIMESTAMP   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, /* 日時 */
 PRIMARY KEY (ID)
@@ -40,27 +39,29 @@ PRIMARY KEY (ID)
 --BCテーブルにテスト用のデータを登録するSQL文1
 INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
 'hyogo_satou',
-1,
 100
 );
 
 INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
 'tokyo_tanaka',
-4,
 200
 );
 
 INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
 'hyogo_satou',
-7,
 120
 )
 
 INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
 'tokyo_tanaka',
-5,
 50
 )
+
+INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+'tokyo_tanaka',
+150
+)
+
 
 /* EXERCISES テーブルを作成する SQL 文 */
  CREATE TABLE EXERCISES (
@@ -103,11 +104,22 @@ INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
  PRIMARY KEY (user_id)
 );
 
-INSERT INTO SUMCALORIES(user_id, sum_calorie)
 
-
+/* SUMCALORIESテーブルを作成するSQL文 */
 CREATE TABLE SUMCALORIES (user_id, sum_calorie)
 AS
 SELECT user_id, SUM(calorie)
 FROM CALORIES
 GROUP BY user_id;
+
+
+/* 日ごとのsumcaloriesテーブルを作成するSQL文 */
+create table day_sumcalories(day, user_id, sum)
+as
+select to_char(c.days, 'yyyy/mm/dd')day,
+c.user_id,
+sum(c.calorie)
+from calories c
+group by
+to_char(c.days, 'yyyy/mm/dd'),c.user_id
+order by to_char(c.days, 'yyyy/mm/dd');
