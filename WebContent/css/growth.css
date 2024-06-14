@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* hedder */
+h2{
+    text-align: center;
+}
+/* main */
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+    margin-top: 10%;
+    width: 80%;
+    margin: 0 auto;
+    height: 50%;
+    border-radius: 20px;
+    background-color: #FAFAFA;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/*タブのスタイル*/
+.tab_item {
+    width: calc(100%/2);
+    height: 100%;
+    border-radius: 20px;
+    background-color: #FAFAFA;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.tab_item:hover {
+    opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+    display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#one:checked ~ #one_content,
+#all:checked ~ #all_content {
+    display: block;
+}
+
+/*選択されているタブのスタイル*/
+.tabs input:checked + .tab_item {
+    background-color: #F2ceff;
+}
+
+.uparrow {
+    background-image: url(../images/arrow1.png);
+    background-size: auto;
+}
+.downarrow {
+    background-image: url(../images/arrow2.png);
+    background-size: auto;
+}
+/* footer */
+
+/* other */
