@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class GrowthServlet
@@ -21,8 +20,16 @@ public class GrowthServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		//		HttpSession session = request.getSession();
+		//		if (session.getAttribute("id") == null) {
+		//			response.sendRedirect("/E3/LoginServlet");
+		//			return;
+		//		}
+		
+		// 成長記録（図鑑）ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
+			dispatcher.forward(request, response);
 	}
 
 	/**
@@ -30,15 +37,17 @@ public class GrowthServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/E3/LoginServlet");
-					return;
-				}
+		//		HttpSession session = request.getSession();
+		//		if (session.getAttribute("id") == null) {
+		//			response.sendRedirect("/E3/LoginServlet");
+		//			return;
+		//		}
 		
 		// 成長記録（図鑑）ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
 			dispatcher.forward(request, response);
+		//ログイン状態	
+		//	request.setAttribute("user_id", user_id);
 	}
 
 }
