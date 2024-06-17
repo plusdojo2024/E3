@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.BcDAO;
+import model.Bc;
+
 /**
- * Servlet implementation class WalkServlet
+ * Servlet implementation class RegistServlet
  */
 @WebServlet("/WalkServlet")
 public class WalkServlet extends HttpServlet {
@@ -21,16 +24,21 @@ public class WalkServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+//		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/simpleBC/LoginServlet");
+//			return;
+//		}
 
-		// カロリー登録ページにフォワードする
+		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/walking.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	//カロリー登録画面に入力した情報は
-	//--------------------------------------------------------------------------------------------
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
@@ -41,27 +49,22 @@ public class WalkServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-
-		String ex_ID = request.getParameter("ex_ID");
-		String calorie = request.getParameter("calorie");
-		String days = request.getParameter("days");
-
+		Double calorie = request.getParameter(calorie);
 
 		// 登録処理を行う
 		CaloriesDAO cDao = new CaloriesDAO();
-
-		/*if () {
-
+		if (cDao.insert(new Bc(0, )))
+		 {	// 登録成功
+			request.setAttribute("result",
+			new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
 		}
-		else {
-
-		}*/
+		else {												// 登録失敗
+			request.setAttribute("result",
+			new Result("登録失敗！", "レコードを登録できませんでした。", "/simpleBC/MenuServlet"));
+		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Main.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	//----------------------------------------------------------------------------------------------
-
 }
