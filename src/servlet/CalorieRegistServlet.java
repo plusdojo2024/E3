@@ -44,28 +44,27 @@ public class CalorieRegistServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
+			response.sendRedirect("/E3/LoginServlet");
 			return;
 		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
-		String ex_ID = request.getParameter("ex_ID");
+		//String ex_ID = request.getParameter("ex_ID");
 		String calorie = request.getParameter("calorie");
 		// 改造（ここまで）
 
 		// 登録処理を行う
 		CaloriesDao cDao = new CaloriesDao();
-		// 改造（ここから）
-		if (cDao.insert(new Calories(0, ex_ID, calorie))) {	// 登録成功
-			// 改造（ここまで）
+		//　データ型は外部設計書に従って変更されます。
+		if (cDao.insert(new Calories(0, /*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie)))) {
+			// 登録成功
 			request.setAttribute("message", "登録が成功しました。");
 		}
-		else {												// 登録失敗
+		else {// 登録失敗
 			request.setAttribute("message", "登録が失敗しました。");
 		}
-
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
