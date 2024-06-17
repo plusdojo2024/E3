@@ -27,7 +27,7 @@ public class Users implements Serializable {
 
     //引数があるコンストラクタ
     public Users(int id, String user_id, String password, String user_name, Double height, Double weight,
-            Integer gender, Double goal_weight, String cat) {
+            int gender, Double goal_weight, String cat) {
         super();
         this.id = id;
         this.user_id = user_id;
@@ -45,6 +45,19 @@ public class Users implements Serializable {
     	this.user_id = user_id;
         this.password = password;
     }
+
+    public Users(int id, String user_name, Double height, Double weight,
+            int gender, Double goal_weight, String cat) {
+        super();
+        this.id = id;
+        this.user_name = user_name;
+        this.height = height;
+        this.weight = weight;
+        this.gender = gender;
+        this.goal_weight = goal_weight;
+        this.cat = cat;
+    }
+
 
 	public int getId() {
 		return id;

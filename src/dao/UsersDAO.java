@@ -74,7 +74,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのID列にはNULLを指定する）
-			String sql = "INSERT INTO Users(ID, USER_ID, PASSWORD, USER_NAME, HEIGHT, WEIGHT, GENDER, GOAL_WEIGHT) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Users(ID, USER_ID, PASSWORD, USER_NAME, HEIGHT, WEIGHT, GENDER, GOAL_WEIGHT, CAT) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -110,6 +110,12 @@ public class UsersDAO {
 				else {
 					pStmt.setString(7, "（未設定）");
 				}
+				if (users.getCat() != null && !users.getCat().equals("")) {
+					pStmt.setString(8, users.getCat());
+				}
+				else {
+					pStmt.setString(8, "（未設定）");
+				}
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -139,7 +145,7 @@ public class UsersDAO {
 	}
 
 	// 引数usersで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean updateUsers(Users users) {
+	public boolean updateUsers(Users users,String user_id) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -151,7 +157,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Users SET USER_NAME=?, HEIGHT=?, WEIGHT=?, GENDER=?, GOAL_WEIGHT=?";
+			String sql = "UPDATE Users SET USER_NAME=?, HEIGHT=?, WEIGHT=?, GENDER=?, GOAL_WEIGHT=?, CAT=? where user_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -160,9 +166,25 @@ public class UsersDAO {
 			pStmt.setDouble(3, users.getWeight());
 			pStmt.setInt(4, users.getGender());
 			pStmt.setDouble(5, users.getGoal_weight());
+			if (users.getCat() != null && !users.getCat().equals("")) {
+				pStmt.setString(6, users.getCat());
+			}
+			else {
+				pStmt.setString(6, "キャットネス");
+			}
+			pStmt.setString(7, user_id);
+//			pStmt.setString(1, "yamadahanako");
+//			pStmt.setDouble(2, 147.0);
+//			pStmt.setDouble(3, 50.0);
+//			pStmt.setInt(4, 2);
+//			pStmt.setDouble(5, 75.0);
+//			pStmt.setString(6, "neko");
+//			pStmt.setString(7, user_id);
 
 			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
+			int data1 = pStmt.executeUpdate();
+			System.out.println("Update Status:" + data1);
+			if (data1 == 1) {
 				result = true;
 			}
 		}
@@ -189,55 +211,55 @@ public class UsersDAO {
 	}
 
 		// 引数usersで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean updateCat(Users users) {
-		Connection conn = null;
-		boolean result = false;
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
-
-			// SQL文を準備する
-			String sql = "UPDATE Users SET CAT=?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-			if (users.getCat() != null && !users.getCat().equals("")) {
-				pStmt.setString(1, users.getCat());
-			}
-			else {
-				pStmt.setString(1, "キャットネス");
-			}
-
-			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
-				result = true;
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		// 結果を返す
-		return result;
-	}
+//	public boolean updateCat(Users users) {
+//		Connection conn = null;
+//		boolean result = false;
+//
+//		try {
+//			// JDBCドライバを読み込む
+//			Class.forName("org.h2.Driver");
+//
+//			// データベースに接続する
+//			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
+//
+//			// SQL文を準備する
+//			String sql = "UPDATE Users SET CAT=?";
+//			PreparedStatement pStmt = conn.prepareStatement(sql);
+//
+//			// SQL文を完成させる
+//			if (users.getCat() != null && !users.getCat().equals("")) {
+//				pStmt.setString(1, users.getCat());
+//			}
+//			else {
+//				pStmt.setString(1, "キャットネス");
+//			}
+//
+//			// SQL文を実行する
+//			if (pStmt.executeUpdate() == 1) {
+//				result = true;
+//			}
+//		}
+//		catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		finally {
+//			// データベースを切断
+//			if (conn != null) {
+//				try {
+//					conn.close();
+//				}
+//				catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//
+//		// 結果を返す
+//		return result;
+//	}
 
 		// 引数usersで指定されたレコードを更新し、成功したらtrueを返す
 		// public boolean updateSumCalories(Users users) {
