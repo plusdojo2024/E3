@@ -13,7 +13,7 @@ import model.Calories;
 public class CaloriesDAO {
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Calories calories,String user_id) {
+	public boolean insert(int id, String user_id, double calorie) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -30,7 +30,7 @@ public class CaloriesDAO {
 
 			// SQL文を完成させる
 				pStmt.setString(1, user_id);
-				pStmt.setDouble(2, calories.getCalorie());
+				pStmt.setDouble(2, calorie);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
