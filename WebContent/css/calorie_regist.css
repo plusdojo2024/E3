@@ -21,11 +21,11 @@ body {
     align-items: center;
     padding: 10px;
 
-    background-color: #F2CFEE; /* Color de fondo rosa claro */
-    border: 1px solid #000; /* Borde negro */
+    background-color: #F2CFEE;
+    border: 1px solid #000;
 
-    width: 100%; /* Ocupa todo el ancho */
-    box-sizing: border-box; /* Incluir padding y border en el ancho total */
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
 }
 .header img {
@@ -92,18 +92,18 @@ body {
      font-family: 'DotGothic16', sans-serif;
 }
 #time, #calorie {
-  width: 100px; /* Ajusta el ancho de los campos específicos a 100px */
+  width: 100px;
 }
 #ex_ID{
 	width:215px;
 }
 
 body, html {
-    margin: 0; /* Elimina el margen por defecto del body y html */
-    padding: 0; /* Elimina el padding por defecto del body y html */
+    margin: 0;
+    padding: 0;
 }
 input, select {
-    font-family: 'DotGothic16', sans-serif; /* Cambia a la fuente deseada */
-    font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 16px;
 }
 

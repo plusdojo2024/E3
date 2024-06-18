@@ -12,6 +12,12 @@ public class Calories implements Serializable {
 		this.calorie = calorie;
 	}
 
+    public Calories(int id, Double calorie) {
+		this.id = id;
+
+		this.calorie = calorie;
+	}
+
     public Calories(String user_id, Double calorie) {
 		this.user_id = user_id;
 		this.calorie = calorie;
