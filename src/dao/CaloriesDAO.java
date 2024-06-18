@@ -173,4 +173,59 @@ public class CaloriesDAO {
 		return CaloriesList;
 	}
 
+	public List<Calories> selectall(Calories calories,String user_id) {
+		Connection conn = null;
+		List<Calories> CaloriesList = new ArrayList<Calories>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT SUM(calorie) FROM CALORIES where user_id = ? GROUP BY user_id;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1, user_id);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Calories record = new Calories(
+//				rs.getInt("ID"),
+//				rs.getString("USER_ID"),
+				rs.getDouble("SUM(calorie)")
+				);
+				CaloriesList.add(record);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			CaloriesList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			CaloriesList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					CaloriesList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return CaloriesList;
+	}
 }

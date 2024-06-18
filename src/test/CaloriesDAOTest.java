@@ -10,6 +10,7 @@ public class CaloriesDAOTest {
         testinsert();
 		testselectday();	// 日ごとの場合のテスト
         testselectmonth();  //月ごとの場合のテスト
+        testselectall();   //全ての合計のテスト
 	}
 
 	// insert()のテスト
@@ -59,5 +60,17 @@ public class CaloriesDAOTest {
 		}
 	}
 
+	// selectall()のテスト
+	public static void testselectall() {
+		CaloriesDAO dao = new CaloriesDAO();
+		System.out.println("---------- selectall()のテスト ----------");
+		List<Calories> List2 = dao.selectall(new Calories(), "hyogo_satou");
+		for (Calories calories : List2) {
+//			System.out.println("ID：" + calories.getId());
+//			System.out.println("ユーザーID：" + calories.getUser_id());
+			System.out.println("消費カロリー：" + calories.getCalorie());
+			System.out.println();
+		}
+	}
 
 }
