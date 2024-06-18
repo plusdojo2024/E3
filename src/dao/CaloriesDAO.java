@@ -13,7 +13,7 @@ import model.Calories;
 public class CaloriesDAO {
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Calories calories) {
+	public boolean insert(Calories calories,String user_id) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -29,7 +29,7 @@ public class CaloriesDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-				pStmt.setString(1, calories.getUser_id());
+				pStmt.setString(1, user_id);
 				pStmt.setDouble(2, calories.getCalorie());
 
 			// SQL文を実行する
@@ -60,7 +60,7 @@ public class CaloriesDAO {
 	}
 
 
-	public List<Calories> selectday(Calories calories) {
+	public List<Calories> selectday(Calories calories,String user_id) {
 		Connection conn = null;
 		List<Calories> CaloriesList = new ArrayList<Calories>();
 
@@ -72,8 +72,12 @@ public class CaloriesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select sum(c.calorie) from calories c group by to_char(c.days, 'yyyy/mm/dd'),c.user_id;";
+			String sql = "select sum(c.calorie) from calories c where user_id = ? group by to_char(c.days, 'yyyy/mm/dd'),c.user_id;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1, user_id);
+
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -113,7 +117,7 @@ public class CaloriesDAO {
 		return CaloriesList;
 	}
 
-	public List<Calories> selectmonth(Calories calories) {
+	public List<Calories> selectmonth(Calories calories,String user_id) {
 		Connection conn = null;
 		List<Calories> CaloriesList = new ArrayList<Calories>();
 
@@ -125,8 +129,11 @@ public class CaloriesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select sum(c.calorie) from calories c group by to_char(c.days, 'yyyy/mm'),c.user_id;";
+			String sql = "select sum(c.calorie) from calories c where user_id = ? group by to_char(c.days, 'yyyy/mm'),c.user_id;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1, user_id);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
