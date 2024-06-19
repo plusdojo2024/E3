@@ -46,7 +46,7 @@
     </div>
 
     <div class="growth_organism">
-    <img src="/E3/img/卵背景透過.gif" width="200px" height="250px">
+    <img src="/E3/img/tamago.gif" width="200px" height="250px">
     </div>
 
     <!--吹き出し-->
@@ -70,16 +70,18 @@
       <span class="close">&times;</span>
       <br>
       <h2>アカウント情報</h2>
-      <img src="/E3/img/Yuzar_Icon.png" width="65px" height="65px">
+      <img id="profileImage" src="" alt="プロフィール画像" width="75px" height="75px">
+      <br>
+      <input type="file" accept="image/*" onchange="previewImage(event)">
       <form id="myForm">
         <label for="user_name">ユーザーネーム:</label><br>
-        <input type="text" id="user_name" name="user_name" value="たまこ" placeholder="必須入力"><br>
+        <input type="text" id="user_name" name="user_name" value="<%= request.getAttribute("User_Name") %>" placeholder="必須入力"><br>
         <label for="height">身長:</label><br>
-        <input type="text" id="height" name="height" value="200.0" placeholder="必須入力"><br>
+        <input type="text" id="height" name="height" value="<%= request.getAttribute("Height") %>" placeholder="必須入力"><br>
         <label for="weight">体重:</label><br>
-        <input type="text" id="weight" name="weight" value="200.0" placeholder="必須入力"><br>
+        <input type="text" id="weight" name="weight" value="<%= request.getAttribute("Weight") %>" placeholder="必須入力"><br>
         <label for="goal_weight">目標体重:</label><br>
-        <input type="text" id="goal_weight" name="goal_weight" value="25.0" placeholder="必須入力"><br>
+        <input type="text" id="goal_weight" name="goal_weight" value="<%= request.getAttribute("Goal_Weight") %>" placeholder="必須入力"><br>
       </form>
 	<p id="user_alert_message" style="color: red;"></p>
       ーーーーーーーーーーー
@@ -102,13 +104,39 @@
       <h2>キャットネスに名前をつけよう</h2>
       <form id="myForm2">
         <label for="cat_name">キャットネスの名前:</label><br>
-        <input type="text" id="cat_name" name="cat_name" value="キューピー" placeholder="必須入力"><br>
+        <input type="text" id="cat_name" name="cat_name" value="<%= request.getAttribute("Cat_Name") %>" placeholder="必須入力"><br>
       </form>
       <p id="cat_name_message" style="color: red;"></p>
     </div>
   </div>
 
   <script src="/E3/js/main3.js"></script>
+  <script>
+        // ページ読み込み時にプロフィール画像を設定する
+        window.onload = function() {
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                const imgElement = document.getElementById('profileImage');
+                imgElement.src = savedImage;
+            }
+        };
+
+        // プロフィール画像を表示するための関数
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const imgElement = document.getElementById('profileImage');
+                imgElement.src = reader.result;
+
+                // 選択された画像をローカルストレージに保存する
+                localStorage.setItem('profileImage', reader.result);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    </script>
 
 </body>
 </html>

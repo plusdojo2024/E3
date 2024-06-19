@@ -175,6 +175,13 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+/* プロフィール画像について */
+ #profileImage {
+            cursor: pointer; /* カーソルをポインターに変更してクリック可能であることを示す */
+}
+ #fileInput {
+			 display: none; /* ファイル選択用のinputを非表示にする */
+}
 
   /* モーダルウインドウアニメーション：ふわっと表示 */
 @keyframes fadeIn {

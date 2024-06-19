@@ -1,6 +1,7 @@
 /**
  *
  */
+
  //ここからキャットネスウインドウについて
     let random = 1
     console.log( random );
@@ -81,7 +82,6 @@ function sendData() {
 	console.log('生物の名前:', cat_name);
     // ここにデータを送信するためのコードを追加する
     // 例えば、Ajaxを使用してサーバーにデータを送信するなど
-	//console.log("FormData:",  nameValue); // デバッグ用のログ出力
     var xhr = new XMLHttpRequest();
   xhr.open("POST", "/E3/UpdateDataServlet", true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
