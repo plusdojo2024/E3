@@ -18,7 +18,7 @@ public class CaloriesDAOTest {
 		CaloriesDAO dao = new CaloriesDAO();
 		System.out.println("---------- insert()のテスト ----------");
 		Calories insRec = new Calories(0, "hyogo_satou", 180.0);
-		if (dao.insert(insRec, "hyogo_satou")) {
+		if (dao.insert(0, "hyogo_satou", 180.0)) {
 			System.out.println("登録成功！");
 			List<Calories> List3 = dao.selectday(insRec, "hyogo_satou");
 			for (Calories calories : List3) {

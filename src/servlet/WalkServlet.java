@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BcDAO;
-import model.Bc;
+import dao.CaloriesDAO;
 
 /**
  * Servlet implementation class RegistServlet
@@ -24,16 +23,20 @@ public class WalkServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 //		HttpSession session = request.getSession();
 //		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/simpleBC/LoginServlet");
+//			response.sendRedirect("/E3/LoginServlet");
 //			return;
 //		}
+
+
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/walking.jsp");
 		dispatcher.forward(request, response);
+
+
 	}
 
 	/**
@@ -49,22 +52,22 @@ public class WalkServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		Double calorie = request.getParameter(calorie);
+		String user_id = request.getParameter("user_id");
+		String calorie = request.getParameter("calorie");
 
 		// 登録処理を行う
 		CaloriesDAO cDao = new CaloriesDAO();
-		if (cDao.insert(new Bc(0, )))
-		 {	// 登録成功
-			request.setAttribute("result",
-			new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
+		//　データ型は外部設計書に従って変更されます。
+		if (cDao.insert(0,user_id,Double.parseDouble(calorie))) {
+			// 登録成功
+			request.setAttribute("message", "登録が成功しました。");
 		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/simpleBC/MenuServlet"));
+		else {// 登録失敗
+			request.setAttribute("message", "登録が失敗しました。");
 		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
 }

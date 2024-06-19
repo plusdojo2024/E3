@@ -4,103 +4,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/E3/css/common.css">
+<link rel="stylesheet" href="/E3/css/login.css">
+<script src="/E3/js/login.js"></script>
 <title>ふぃたごっち</title>
-<!--
-<style>
-       
-.wrapper {
-  background-color: #FBF0B2;
-  
-}
-
-.content {
-  margin: 10px auto 10px auto;
-  width: 720px;	
-}
-h2 {
-font-size: 28px;
-border-bottom-width: 2px;
-border-bottom-style: dotted;
-border-bottom-color: saddlebrown;
-padding: 20px auto 20px;
-}
-
-#footer-bg{
- margin-top: 30px;
- background-image:url(nodoguro_footer.gif);
- background-repeat: repeat-x;
- height: 162px;
- width:100%;
-}
-
-#footer{
-margin-top:30px;
-margin: 10px auto 10px auto;
-
-/*width: 720px;
-  background-image: url(footer-bg.png);
-  background-repeat: repeat-x;
-}*/
-</style>
--->
 </head>
 <body>
 
-<div class="wrapper">
-	<div class="content">
-		<div style="padding-top:30px;">
   			<h1 id="logo">
-    			<a href="login.html"><img src="卵背景透過➀.png" width="260" height="60" alt="ふぃたごっち"></a>
-  			</h1>
-  		</div>
-
-<h2>ログイン</h2>
-
-<form method="POST" action="/simpleBC/LoginServlet">
-    <table>
-      <tr>
-        <td>
-          <label>ID
-          <input type="text" name="ID">
-          </label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>パスワード
-          <input type="password" name="PW">
-          </label>
-        </td>
-      <tr>
-      <tr>
-        <label>新規登録
+    			<a href="login.html"><img src="ふぃたごっち.png" width="300" height="150" alt="ふぃたごっち"></a>
           
-          </label>
-        <td>
-      </tr>
-    </table>
+  			</h1>
 
+
+<!--<h2>新規登録ｲ</h2>
+        <h2 text-align:center></h2>-->
+<div class="loginbox">
+<form id="login_form" method="POST" action="/E3/LoginServlet">
+        <p>ID<br></p>
+        <input type="text" name="id" value=""placeholder="ID">
+          
+        <p>パスワード<br></p>
+        <input type="password" name="password" value=""placeholder="パスワード">
+
+      <p><input type= "submit" value="ログイン" class="login"><br></p>
+      
+      <span id="error_message"></span>
+
+      <p><button>新規登録へ</button></p>
 </form>
-<div id="footer-bg"></div>
-<div id="footer">
-
-    <p style="padding-top:0px;text-align:center;">&copy;2024 MySTAR ALL Rights Reserved</p>
+    <p>&copy;2024 MySTAR ALL Rights Reserved</p>
 </div>
-</div><!--  content --> 
-
-
-<!-- メイン（ここまで） -->
-<!-- フッター（ここから） -->
-
-</div><!--  wrapper --> 
-
-
-
 </body>
 </html>
-</head>
-<body>
 
-</body>
-</html>
