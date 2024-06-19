@@ -1,0 +1,69 @@
+       @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+.template-color-sample{
+color:#FBF0B2;
+color:#F2CFEE;
+}
+body {
+  background-color: #FBF0B2;
+  font-family: 'DotGothic16' ,sans-serif;
+  border: #F2CFEE;
+}
+input[type='text']{
+  font-family: 'DotGothic16' ,sans-serif;
+  box-sizing: border-box;
+    padding: 0.3em;
+    border-radius: 30px;
+  border-color: #F2CFEE;
+    text-align: center;
+    background: #FFFFFF;
+    box-align: center;
+}
+input[type='text']:focus{
+  font-family: 'DotGothic16' ,sans-serif;
+  border-color: #F2CFEE;
+  background: #F2CFEE;
+}
+input[type='password']{
+  font-family: 'DotGothic16' ,sans-serif;
+  box-sizing: border-box;
+    padding: 0.3em;
+    border-radius: 30px;
+  border-color: #F2CFEE;
+    text-align: center;
+    background: #FFFFFF;
+    box-align: center;
+}
+input[type='password']:focus{
+  font-family: 'DotGothic16' ,sans-serif;
+  border-color: #F2CFEE;
+  background: #F2CFEE;
+}
+.idpwbox {
+padding-top:30px;
+text-align:center;
+  
+}
+.idpwinfo {
+padding-top:30px;
+text-align:center;
+}
+
+button{
+  font-family: 'DotGothic16' ,sans-serif;
+  padding:0.3em;
+  border-radius: 10px;
+  border-color: #000000;
+  background-color: #FFFFFF;
+}
+#footer{
+  text-align: center;
+  position:relative;
+  top: 40px;
+}
+.touroku{
+  font-family: 'DotGothic16' ,sans-serif;
+  padding:0.3em;
+  border-radius: 10px;
+  border-color: #000000;
+  background-color: #FFFFFF;
+}
