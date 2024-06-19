@@ -97,14 +97,6 @@ INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
  VALUES (7, 'おさんぽ' ,3.5);
 
 
-/* 総消費カロリーのテーブルを作成するSQL文 */
- CREATE TABLE SUMCALORIES (
- user_id        VARCHAR(20) ,         /* ユーザーID */
- sum_calorie    DOUBLE      ,         /* 総消費カロリー */
- PRIMARY KEY (user_id)
-);
-
-
 /* SUMCALORIESテーブルを作成するSQL文 */
 CREATE TABLE SUMCALORIES (user_id, sum_calorie)
 AS
@@ -123,3 +115,14 @@ from calories c
 group by
 to_char(c.days, 'yyyy/mm/dd'),c.user_id
 order by to_char(c.days, 'yyyy/mm/dd');
+
+/* 月ごとのsumcaloriesテーブルを作成するSQL文 */
+create table month_sumcalories(day, user_id, sum)
+as
+select to_char(c.days, 'yyyy/mm')day,
+c.user_id,
+sum(c.calorie)
+from calories c
+group by
+to_char(c.days, 'yyyy/mm'),c.user_id
+order by to_char(c.days, 'yyyy/mm');
