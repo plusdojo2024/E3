@@ -37,72 +37,37 @@ PRIMARY KEY (ID)
 );
 
 --BCテーブルにテスト用のデータを登録するSQL文1
-INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, CALORIE) VALUES (
 'hyogo_satou',
 100
 );
 
-INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, CALORIE) VALUES (
 'tokyo_tanaka',
 200
 );
 
-INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, CALORIE) VALUES (
 'hyogo_satou',
 120
 )
 
-INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, CALORIE) VALUES (
 'tokyo_tanaka',
 50
 )
 
-INSERT INTO CALORIES(USER_ID, EX_ID, CALORIE) VALUES (
+INSERT INTO CALORIES(USER_ID, CALORIE) VALUES (
 'tokyo_tanaka',
 150
 )
 
-
-/* EXERCISES テーブルを作成する SQL 文 */
- CREATE TABLE EXERCISES (
- ex_ID          INTEGER       ,         /* 運動ID */
- exercise_name  VARCHAR(10)   ,         /* 運動項目 */
- mets           DOUBLE        ,         /* メッツ */
- PRIMARY KEY (ex_ID)
+CREATE TABLE SUMCALORIES (
+ID       INTEGER     	 AUTO_INCREMENT,         /* ID */
+USER_ID  VARCHAR(20)	 NOT NULL,               /*USERID*/
+SUM_CALORIE  DOUBLE      NOT NULL,               /* 総消費カロリー */
+PRIMARY KEY (ID)
 );
-
-/* BC テーブルにテスト用のデータを登録する SQL 文 */
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (0, 'ストレッチング' ,2.3);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (1, '自重筋力トレーニング', 3.5);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (2, 'ラジオ体操' ,4.0);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (3, '階段の上り下り' ,5.5);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (4, 'ウェイトトレーニング' ,6.0);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (5, 'サイクリング' ,8.0);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (6, 'ランニング' ,10.0);
-
-INSERT INTO EXERCISES(ex_ID, exercise_name, mets)
- VALUES (7, 'おさんぽ' ,3.5);
-
-
-/* SUMCALORIESテーブルを作成するSQL文 */
-CREATE TABLE SUMCALORIES (user_id, sum_calorie)
-AS
-SELECT user_id, SUM(calorie)
-FROM CALORIES
-GROUP BY user_id;
 
 
 /* 日ごとのsumcaloriesテーブルを作成するSQL文 */
@@ -115,6 +80,7 @@ from calories c
 group by
 to_char(c.days, 'yyyy/mm/dd'),c.user_id
 order by to_char(c.days, 'yyyy/mm/dd');
+
 
 /* 月ごとのsumcaloriesテーブルを作成するSQL文 */
 create table month_sumcalories(day, user_id, sum)
