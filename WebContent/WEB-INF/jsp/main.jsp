@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>メイン画面</title>
-    <link rel="stylesheet" href="/E3/css/main.css">
+    <link rel="stylesheet" href="/E3/css/main2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
@@ -18,13 +18,13 @@
 
     <div class="first_row">
         <div class="left">
-            <img src="/E3/img/卵背景透過.png" width="90px" height="105px">
+            <a href="/E3/MainServlet"><img src="/E3/img/TOP.png" width="90px" height="105px"></a>
         </div>
         <div class="center">
-            <b>キャットネス</b>
+            <b><%= request.getAttribute("Cat_Name") %></b>
         </div>
         <div class="right" style="cursor: pointer;">
-            <img src="/E3/img/Yuzar_Icon.png" width="95px" height="105px" id="myImg">
+            <img src="/E3/img/Yuzar_Icon.png" width="90px" height="105px" id="myImg">
         </div>
 
     </div>
@@ -33,7 +33,7 @@
 
     <div class="second_row">
         <div class="right">
-            <img src="/E3/img/gurafu.png" width="95px" height="100px">
+            <img src="/E3/img/graph.png" width="85px" height="100px">
         </div>
     </div>
 
@@ -41,12 +41,12 @@
 
     <div class="third_row">
         <div class="right">
-            <img src="/E3/img/book_zukan_animal.png" width="85px" height="100px">
+            <img src="/E3/img/index.png" width="85px" height="100px">
         </div>
     </div>
 
     <div class="growth_organism">
-    <img src="/E3/img/tamago.gif" width="200px" height="250px">
+    <img id="myImage" src="/E3/img/tamago.gif" width="210px" height="250px">
     </div>
 
     <!--吹き出し-->
@@ -54,7 +54,10 @@
         <p>運動しましょう!!</p>
         </div>
 
-    <br>
+	<br>
+        <b>現在の総消費カロリー：<%= request.getAttribute("Sum_Calorie") %>kcal</b><br>
+        <input type="text" id="Sum_Calorie" name="Sum_Calorie" value="<%= request.getAttribute("Sum_Calorie") %>" style="display: none;">
+
     <br>
     <br>
 
@@ -70,9 +73,9 @@
       <span class="close">&times;</span>
       <br>
       <h2>アカウント情報</h2>
-      <img id="profileImage" src="" alt="プロフィール画像" width="75px" height="75px">
+      <img id="profileImage" src="" alt="プロフィール画像" width="75px" height="75px" onclick="selectImage()">
       <br>
-      <input type="file" accept="image/*" onchange="previewImage(event)">
+      <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
       <form id="myForm">
         <label for="user_name">ユーザーネーム:</label><br>
         <input type="text" id="user_name" name="user_name" value="<%= request.getAttribute("User_Name") %>" placeholder="必須入力"><br>
@@ -101,7 +104,7 @@
     <div class="modal-content">
       <span class="close2">&times;</span>
       <br>
-      <h2>キャットネスに名前をつけよう</h2>
+      <h3>卵が孵化しました!!<br>キャットネスに名前をつけてあげよう!!</h3>
       <form id="myForm2">
         <label for="cat_name">キャットネスの名前:</label><br>
         <input type="text" id="cat_name" name="cat_name" value="<%= request.getAttribute("Cat_Name") %>" placeholder="必須入力"><br>
@@ -110,31 +113,41 @@
     </div>
   </div>
 
-  <script src="/E3/js/main3.js"></script>
+  <script src="/E3/js/main.js"></script>
   <script>
-        // ページ読み込み時にプロフィール画像を設定する
+        // 初期表示時にローカルストレージから画像を読み込む
         window.onload = function() {
             const savedImage = localStorage.getItem('profileImage');
             if (savedImage) {
                 const imgElement = document.getElementById('profileImage');
                 imgElement.src = savedImage;
+                const ImgElement = document.getElementById('myImg');
+                ImgElement.src = savedImage;
             }
         };
 
+        // プロフィール画像をクリックしたらファイル選択ダイアログを表示する関数
+        function selectImage() {
+            document.getElementById('fileInput').click();
+        }
+
         // プロフィール画像を表示するための関数
         function previewImage(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
+            const file = event.target.files[0]; // 選択されたファイルを取得
+            const reader = new FileReader(); // FileReaderオブジェクトを作成
 
+            // 読み込みが完了した際の処理
             reader.onload = function() {
-                const imgElement = document.getElementById('profileImage');
-                imgElement.src = reader.result;
+                const imgElement = document.getElementById('profileImage'); // img要素を取得
+                imgElement.src = reader.result; // 画像のURLをimg要素のsrc属性に設定
+                const ImgElement = document.getElementById('myImg');
+                ImgElement.src = reader.result;
 
-                // 選択された画像をローカルストレージに保存する
+                // ローカルストレージに画像のDataURLを保存
                 localStorage.setItem('profileImage', reader.result);
             }
 
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file); // ファイルの読み込みを実行
         }
     </script>
 

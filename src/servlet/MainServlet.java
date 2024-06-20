@@ -89,12 +89,31 @@ public class MainServlet extends HttpServlet {
                     System.out.println("猫の名前 : "+ Cat_Name);
                 }
 
+                // サムカロリーを持ってくる
+                sql = "SELECT  * FROM SUMCALORIES WHERE id = 1"; // SQL文を適切に書き換える
+                statement = conn.prepareStatement(sql);
+                //statement.setInt(1, 1); // idが1のレコードを取得する例
+                resultSet = statement.executeQuery();
+
+                Double Sum_Calorie = 0.0;
+                String SC = "";
+
+                if (resultSet.next()) {
+                    Sum_Calorie = resultSet.getDouble("SUM_CALORIE");
+                    SC = String.valueOf(Sum_Calorie);
+                    System.out.println("合計消費カロリー : "+ SC);
+                }
+
+
                 // JSPにデータを送信
                 request.setAttribute("User_Name", User_Name);
                 request.setAttribute("Height", Change_HG);
                 request.setAttribute("Weight", Change_WG);
                 request.setAttribute("Goal_Weight", Change_GW);
                 request.setAttribute("Cat_Name", Cat_Name);
+
+                request.setAttribute("Sum_Calorie", SC);
+
                 request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
 
              // データベースを切断
