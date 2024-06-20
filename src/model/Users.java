@@ -58,7 +58,11 @@ public class Users implements Serializable {
         this.goal_weight = goal_weight;
         this.cat = cat;
     }
-
+    public Users(String user_id, String password) {
+    	super();
+    	this.user_id = user_id;
+        this.password = password;
+    }
 
 	public int getId() {
 		return id;

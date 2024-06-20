@@ -45,9 +45,13 @@ public class DeleteServlet extends HttpServlet {
             PreparedStatement pStmt = con.prepareStatement(sql);
             pStmt.setString(1, user_id);
 
+
             // データベースとの接続を閉じる
             pStmt.close();
             con.close();
+
+            //リクエストスコープへ格納
+            request.setAttribute("user_id", user_id);
 
             // 更新が成功したことをクライアントに返す
             response.getWriter().write("データが消去されました");
