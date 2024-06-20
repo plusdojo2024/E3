@@ -9,18 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CaloriesDAO;
+import dao.UsersDAO;
+import model.Users;
 
 /**
- * Servlet implementation class RegistServlet
+ * Servlet implementation class IdpwRegistServlet
  */
-@WebServlet("/CalorieRegistServlet")
-public class CalorieRegistServlet extends HttpServlet {
+@WebServlet("/IdpwRegistServlet")
+public class IdpwRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		/*HttpSession session = request.getSession();
@@ -31,7 +32,7 @@ public class CalorieRegistServlet extends HttpServlet {
 */
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/idpw_regist.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -51,23 +52,16 @@ public class CalorieRegistServlet extends HttpServlet {
 		// 改造（ここから）
 		//String ex_ID = request.getParameter("ex_ID");
 		String user_id = request.getParameter("user_id");
-		String calorie = request.getParameter("calorie");
+		String password = request.getParameter("password");
 		// 改造（ここまで）
 
 		// 登録処理を行う
-		CaloriesDAO cDao = new CaloriesDAO();
+		UsersDAO nDao = new UsersDAO();
+		//String user_id =(String) session.getAttribute("id");
 		//　データ型は外部設計書に従って変更されます。
-		cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie));
-		//if (cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie))) {
-			// 登録成功
-			//request.setAttribute("message", "登録が成功しました。");
-			//request.setAttribute("user_id", user_id);
-		//}
-		//else {// 登録失敗
-		//	request.setAttribute("message", "登録が失敗しました。");
-		//}
+		nDao.insertUsers(new Users(0, user_id,password));
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");
 		dispatcher.forward(request, response);
 	}
 

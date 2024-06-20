@@ -14,7 +14,7 @@
 
 		<div class="idpwbox">
   			<h1 id="logo">
-    			<a href="login.html"><img src="ふぃたごっち.png" width="300" height="150" alt="ふぃたごっち"></a>
+    			<a href="/E3/LoginServlet"><img src="/E3/img/.png" width="300" height="150" alt="ふぃたごっち"></a>
           </h1>
     </div>
 
@@ -28,12 +28,17 @@
     <p>パスワード<br></p>
           <input type="password" name="password" value="" placeholder="パスワード" maxlength=20 minlength=5>
 
-      <p><input type= "submit" value="新規登録" class="touroku"><br></p>
-            
+
+
             <span id="error_message"></span>
-            
-      <p><button>ログインへ</button><br></p>
+
+      <p><button type="submit">新規登録</button><br></p>
+
+
 </form>
+
+ <a href="/E3/LoginServlet" class="touroku">ログインへ</a>
+     <!--  <p><input type= "submit" value="ログインへ" class="touroku"><br></p> -->
 </div>
 <div id="footer">
 

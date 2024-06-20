@@ -40,8 +40,9 @@ public class Users implements Serializable {
         this.cat = cat;
     }
 
-    public Users(String user_id, String password) {
+    public Users(int id,String user_id, String password) {
     	super();
+    	this.id=id;
     	this.user_id = user_id;
         this.password = password;
     }
