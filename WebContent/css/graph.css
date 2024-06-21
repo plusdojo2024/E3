@@ -3,6 +3,7 @@
 /* hedder */
 body {
 	margin:0;
+	overscroll-behavior:none;
 }
 .header {
 	display: flex;
@@ -114,142 +115,28 @@ body {
   border-right: 12px solid #F2CFEE;
 }
 
-
-/*タブ切り替え全体のスタイル*/
-.tabs {
-    margin-top: 20%;
-    padding-bottom: 10%;
-    width: 95%;
-    margin: 0 auto;
-    height: 300px;
-    border-radius: 20px;
-    background-color: #FAFAFA;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    position: center;
-}
-
-/*タブのスタイル*/
-.tab_item {
-    width: calc(100%/3);
-    border-radius: 20px;
-    background-color: #FAFAFA;
-    line-height: 50px;
-    font-size: 16px;
-    text-align: center;
-    display: block;
-    float: left;
-    text-align: center;
-    font-weight: bold;
-    transition: all 0.2s ease;
-}
-.tab_item:hover {
-    opacity: 0.75;
-}
-
-/*ラジオボタンを全て消す*/
-input[name="tab_item"] {
-    display: none;
-}
-
-/*タブ切り替えの中身のスタイル*/
-.tab_content {
-	height: 300px;
-	display: none;
-	clear: both;
-	overflow: hidden;
-}
-
-
-/*選択されているタブのみを表示*/
-#week:checked ~ #week_content,
-#month:checked ~ #month_content,
-#year:checked ~ #year_content {
-    display: block;
-}
-
-/*選択されているタブのスタイル*/
-.tabs input:checked + .tab_item {
-    background-color: #F2CEFF;
-}
-/* カルーセル */
-
-.c-carousel {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-}
-.c-carousel__activator-main {
-	position: absolute;
-	z-index: -1;
-opacity: 0;
-}
-.c-carousel__main {
-	overflow: hidden;
-	position: relative;
-}
-.c-carousel__main-track {
-	display: flex;
-	white-space: nowrap;
-	transition: transform 0.3s ease-out;
-}
-.c-carousel__main-item {
-	flex-shrink: 0;
-	width: 100%;
-	padding:auto;
-}
-.c-carousel__main-graph {
-	display: block;
-	width:80%;
-	margin: auto;
-}
-.c-carousel__main-control-item {
-	  display: none;
-}
-.c-carousel__btn-prev-main, .c-carousel__btn-next-main {
-	position: absolute;
-	top: 50%;
-	right: 16px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 32px;
-	height: 32px;
-	transform: translateY(-50%);
-	background-color: rgba(0,0,0,0);
-	border-radius: 50%;
-	transition: opacity 0.3s;
-	cursor: pointer;
-}
-.c-carousel__btn-prev-main {
-	left: 0;
-}
-.c-carousel__btn-next-main {
-	right: 0;
-}
-/* スライド */
-.c-carousel__activator-main:nth-child(1):checked ~ .c-carousel__main .c-carousel__main-control-item:nth-child(1) {
-	display: block;
-}
-.c-carousel__activator-main:nth-child(2):checked ~ .c-carousel__main .c-carousel__main-control-item:nth-child(2) {
-	display: block;
-}
-.c-carousel__activator-main:nth-child(3):checked ~ .c-carousel__main .c-carousel__main-control-item:nth-child(3) {
-	display: block;
-}
-/* anime-syon */
-.c-carousel__activator-main:nth-child(1):checked ~ .c-carousel__main .c-carousel__main-track {
-	transform: translateX(calc(-100% * 0));
-}
-.c-carousel__activator-main:nth-child(2):checked ~ .c-carousel__main .c-carousel__main-track {
-	transform: translateX(calc(-100% * 1));
-}
-.c-carousel__activator-main:nth-child(3):checked ~ .c-carousel__main .c-carousel__main-track {
-	transform: translateX(calc(-100% * 2));
-}
-
-
-
+/* tab のスタイル */.tab {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .slider-controls button {
+            font-size: 24px;
+            padding: 10px;
+            margin: 0 10px;
+        }
+        .active-button {
+            background-color: #007bff;
+            color: white;
+        }
+/**/
 
 /* footer */
 

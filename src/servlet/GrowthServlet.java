@@ -48,6 +48,17 @@ public class GrowthServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		//ログイン状態	
 		//	request.setAttribute("user_id", user_id);
+			
+			
+			
+			// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8");
+			double SUM_CALORIE = Double.parseDouble(request.getParameter("SUM_CALORIE"));
+			
+			// JSPにデータを送信
+            request.setAttribute("User_Name", SUM_CALORIE);
+            request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
+			
 	}
 
 }
