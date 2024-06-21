@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/E3/css/common.css">
 <link rel="stylesheet" href="/E3/css/login.css">
-<script src="/E3/js/login.js"></script>
+
 <title>ふぃたごっち</title>
 </head>
 <body>
@@ -39,6 +39,8 @@
       </form>
     <p>&copy;2024 MySTAR ALL Rights Reserved</p>
 </div>
+
+<script src="/E3/js/login.js"></script>
 </body>
 </html>
 
