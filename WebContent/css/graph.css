@@ -115,27 +115,52 @@ body {
   border-right: 12px solid #F2CFEE;
 }
 
-/* tab のスタイル */.tab {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .slider-controls button {
-            font-size: 24px;
-            padding: 10px;
-            margin: 0 10px;
-        }
-        .active-button {
-            background-color: #007bff;
-            color: white;
-        }
+/* tab のスタイル */
+
+.tab {
+	display: none;
+}
+.active {
+	display: block;
+}
+.slider-controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+.slider-controls button {
+	font-size: 24px;
+	margin: 0 100px;
+	background: rgba(0,0,0,0);
+	border:none;
+}
+.graph_back{
+	padding-top:0;
+	width: 333px;
+	margin: 20px;
+	background-color:#FFFFFF;
+	border-radius:22px;
+}
+.exchange_buttons{
+	background: rgba(0,0,0,0);
+	border-radius:30px;
+}
+.exchange_button{
+	background: rgba(0,0,0,0);
+	border:none;
+	width:105.4px;
+	height:40px;
+	border-radius:25px;
+	}
+.active-button {
+	background-color: #F2CFEE;
+}
+.hogeLabel{
+	text-align:center;
+}
+
+/**/
 /**/
 
 /* footer */
