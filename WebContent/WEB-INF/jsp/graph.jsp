@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/E3/css/graph.css">
     <title>ふぃたごっち | 活動記録</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 <body>
 <header>
