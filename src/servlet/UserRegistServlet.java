@@ -18,12 +18,12 @@ public class UserRegistServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/E3/LoginServlet");
-			return;
-		}
+// もしもログインしていなかったらログインサーブレットにリダイレクトする
+/*HttpSession session = request.getSession();
+if (session.getAttribute("id") == null) {
+response.sendRedirect("/E3/LoginServlet");
+return;
+}
 */
         // 登録ページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_regist.jsp");
@@ -33,39 +33,39 @@ public class UserRegistServlet extends HttpServlet {
 
     //コメントに変更ここから
 
-	//protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/E3/LoginServlet");
-			return;
-		}*/
+//protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// もしもログインしていなかったらログインサーブレットにリダイレクトする
+/*HttpSession session = request.getSession();
+if (session.getAttribute("id") == null) {
+response.sendRedirect("/E3/LoginServlet");
+return;
+}*/
 
-		// リクエストパラメータを取得する
-	//	request.setCharacterEncoding("UTF-8");
-		// 改造（ここから）
-		//String ex_ID = request.getParameter("ex_ID");
-	//	String user_name = request.getParameter("user_name");
-	//	String heght = request.getParameter("heght");
-	//	String weight = request.getParameter("weight");
-	//	String gender = request.getParameter("gender");
-	//	String goal_weight = request.getParameter("goal_weight");
-	//	String cat = request.getParameter("cat");
+// リクエストパラメータを取得する
+// request.setCharacterEncoding("UTF-8");
+// 改造（ここから）
+//String ex_ID = request.getParameter("ex_ID");
+// String user_name = request.getParameter("user_name");
+// String heght = request.getParameter("heght");
+// String weight = request.getParameter("weight");
+// String gender = request.getParameter("gender");
+// String goal_weight = request.getParameter("goal_weight");
+// String cat = request.getParameter("cat");
 
-		// 改造（ここまで）
+// 改造（ここまで）
 
-		// 登録処理を行う
-		//UsersDAO nDao = new UsersDAO();
-		//String user_id =(String) session.getAttribute("id");
-		//　データ型は外部設計書に従って変更されます。
-		//nDao.insertUsers(new Users(0, user_name,Double.parseDouble(heght),Double.parseDouble(weight),Integer.parseInt(gender),Double.parseDouble(goal_weight),cat));
-		// 結果ページにフォワードする
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
-	//	dispatcher.forward(request, response);
-	//}
+// 登録処理を行う
+//UsersDAO nDao = new UsersDAO();
+//String user_id =(String) session.getAttribute("id");
+//　データ型は外部設計書に従って変更されます。
+//nDao.insertUsers(new Users(0, user_name,Double.parseDouble(heght),Double.parseDouble(weight),Integer.parseInt(gender),Double.parseDouble(goal_weight),cat));
+// 結果ページにフォワードする
+//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
+// dispatcher.forward(request, response);
+//}
 
-	// termina el doPost
-	//----------------------------------------------------------------------------------------------------------
+// termina el doPost
+//----------------------------------------------------------------------------------------------------------
 //}
 
     //コメントに変更ここまで
