@@ -3,6 +3,7 @@
 /* hedder */
 body {
 	margin:0;
+	overscroll-behavior:none;
 }
 .header {
 	display: flex;
@@ -114,6 +115,7 @@ body {
   border-right: 12px solid #F2CFEE;
 }
 
+<<<<<<< HEAD
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
@@ -250,6 +252,30 @@ opacity: 0;
 
 
 
+=======
+/* tab のスタイル */.tab {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .slider-controls button {
+            font-size: 24px;
+            padding: 10px;
+            margin: 0 10px;
+        }
+        .active-button {
+            background-color: #007bff;
+            color: white;
+        }
+/**/
+>>>>>>> e625cce035511a49ad8b700ff13c60318e55e6d0
 
 /* footer */
 
