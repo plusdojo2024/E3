@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CaloriesDAO;
+
 /**
  * Servlet implementation class GraphServlet
  */
@@ -27,22 +29,31 @@ public class GraphServlet extends HttpServlet {
 		//			return;
 		//		}
 		
-		//ヘッダーに表示するユーザー氏名を取得する
-				request.setCharacterEncoding("UTF-8");
-				String user_name = request.getParameter("user_name");
+		//改造ここから
+        String userId = /*request.getParameter("userId")*/"7499";
+        CaloriesDAO caloriesDAO = new CaloriesDAO();
+        double totalCalories = caloriesDAO.getTotalCaloriesByUserId(userId);
+        request.setAttribute("totalCalories", totalCalories);
+        // Redirigir a la página graph.jsp
+        request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp").forward(request, response);
+        //改造ここまで
+        // 活動記録（グラフ）ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
+		dispatcher.forward(request, response);
+		}
+		/**
+		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+		 */
+		//改造ここから
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				doGet(request, response);
+		//改造ここまで
+			
 				
-		// 活動記録ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
-			dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		//ログイン状態	
-		//	request.setAttribute("user_id", user_id);
+			
+			//ログイン状態	
+				//request.setAttribute("user_id", user_id);
+	
 	}
 
 }
