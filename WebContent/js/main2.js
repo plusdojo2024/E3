@@ -78,7 +78,7 @@ document.getElementsByClassName("close")[0].addEventListener("click", function()
 	var weight = document.getElementById('weight').value;
 	var goal_weight = document.getElementById('goal_weight').value;
 	if(!user_name || !height || !weight || !goal_weight){
-	  document.getElementById("user_alert_message").textContent = "全て必須入力です。";
+	  document.getElementById("user_alert_message").textContent = "全て必須入力です。All fields are required.";
 		}else{
 			document.getElementById("userModal").style.display = "none";
       		// データを送信する処理をここに追加する
@@ -126,3 +126,46 @@ function sendData() {
 xhr.send(join_data);
   }
 //送信関数はここまで
+
+
+	//言語切り替えについて
+    function translateText() {
+
+         // チェックされているラジオボタンの値を取得
+         var selectedOption = document.querySelector('input[name="languages"]:checked');
+
+
+    if(selectedOption === en){
+    console.log("Option 2 is selected");
+
+	//アカウントのモーダルウインドウの文字について
+	document.getElementById("user_text1").textContent = "Account Information:";
+	document.getElementById("user_text2").textContent = "User Name:";
+	document.getElementById("user_text3").textContent = "Height:";
+	document.getElementById("user_text4").textContent = "Weight:";
+	document.getElementById("user_text5").textContent = "Goal Weight:";
+	document.getElementById("user_text6").textContent = "Change language(With some exceptions):";
+	document.getElementById("user_text7").textContent = "LogOut";
+	document.getElementById("user_text8").textContent = "Account Delete";
+
+	document.getElementById("btn_text1").textContent = "Calorie Regist";
+	document.getElementById("btn_text2").textContent = "Walking";
+
+}else if(selectedOption === ja){
+    console.log("Option 1 is selected");
+
+	//アカウントのモーダルウインドウの文字について
+	document.getElementById("user_text1").textContent = "アカウント情報:";
+	document.getElementById("user_text2").textContent = "ユーザーネーム:";
+	document.getElementById("user_text3").textContent = "身長:";
+	document.getElementById("user_text4").textContent = "体重:";
+	document.getElementById("user_text5").textContent = "目標体重:";
+	document.getElementById("user_text6").textContent = "言語切り替え(一部を除く):";
+	document.getElementById("user_text7").textContent = "ログアウト";
+	document.getElementById("user_text8").textContent = "アカウント削除";
+
+	document.getElementById("btn_text1").textContent = "カロリー登録";
+	document.getElementById("btn_text2").textContent = "お散歩";
+
+}
+}

@@ -83,7 +83,8 @@ public class UpdateDataServlet extends HttpServlet {
             Connection con = DriverManager.getConnection(url, user, password);
 
             // データベースのテーブルを更新
-            String sql = "UPDATE Users SET USER_NAME=?, HEIGHT=?,WEIGHT=?,GOAL_WEIGHT=?,CAT=? where ID = 1";
+            //String sql = "UPDATE Users SET USER_NAME=?, HEIGHT=?,WEIGHT=?,GOAL_WEIGHT=?,CAT=? where ID = 1";
+            String sql = "UPDATE Users SET USER_NAME=?, HEIGHT=?,WEIGHT=?,GOAL_WEIGHT=?,CAT=? where user_id = 'hyogo_satou'";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, Use_name);
             ps.setDouble(2, Height);
