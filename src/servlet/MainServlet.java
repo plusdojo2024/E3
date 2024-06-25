@@ -40,17 +40,20 @@ public class MainServlet extends HttpServlet {
         	} catch (ClassNotFoundException e) {
         		e.printStackTrace();
         	}
-
         	// データベース接続情報
             String url = "jdbc:h2:file:C:/pleiades/workspace/data/E3"; // ここに接続URLを設定
             String user = "sa"; // デフォルトでは"sa"
             String password = ""; // パスワードが設定されている場合は設定
 
+            /* 「user_id」取得
+            String user_id = request.getAttribute("user_id").toString();
+            System.out.println(user_id); */
+
          // データベース接続とクエリ実行
             try (Connection conn = DriverManager.getConnection(url, user, password)) {
                 String sql = "SELECT * FROM Users WHERE user_id = 'hyogo_satou'"; // SQL文を適切に書き換える
                 PreparedStatement statement = conn.prepareStatement(sql);
-                //statement.setInt(1, 1); // idが1のレコードを取得する例
+                //statement.setString(1, "user_id"); // idが1のレコードを取得する例
                 ResultSet resultSet = statement.executeQuery();
                 //resultSet.next();
 

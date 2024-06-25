@@ -22,17 +22,21 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "select count(*) from USERS where USER_ID = ? and PASSWORD = ?";
+			String sql = "select count(*) as num from USERS where USER_ID = ? and PASSWORD = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, users.getUser_id());
+			System.out.println(users.getUser_id());
 			pStmt.setString(2, users.getPassword());
+			System.out.println(users.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
-			if (rs.getInt("count(*)") == 1) {
+			int data =  rs.getInt("num");
+			System.out.println("num:" + data);
+			if (rs.getInt("num") == 1) {
 				loginResult = true;
 			}
 		}

@@ -23,10 +23,10 @@
 <div class="loginbox">
 <form id="login_form" method="POST" action="/E3/LoginServlet">
         <p>ID<br></p>
-        <input type="text" name="id" value=""placeholder="ID">
+        <input type="text" name="user_id" value="" placeholder="user_id">
 
         <p>パスワード<br></p>
-        <input type="password" name="password" value=""placeholder="パスワード">
+        <input type="password" name="password" value="" placeholder="パスワード">
 
       <p><input type= "submit" value="ログイン" class="login"><br></p>
 
