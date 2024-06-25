@@ -48,17 +48,22 @@ public class CalorieRegistServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
 		//String ex_ID = request.getParameter("ex_ID");
-		String user_id = request.getParameter("user_id");
+		//String user_id = request.getParameter("user_id");
+		String user_id = "tokyo_tanaka";
+
 		String calorie = request.getParameter("calorie");
 		// 改造（ここまで）
 
 		// 登録処理を行う
 		CaloriesDAO cDao = new CaloriesDAO();
-        boolean result = cDao.insert(0, user_id, Double.parseDouble(calorie));
+        //boolean result = cDao.insert(0, user_id, Double.parseDouble(calorie));
+		boolean insertSuccess = cDao.insert(0, user_id, Double.parseDouble(calorie));
 		//　データ型は外部設計書に従って変更されます。
-		cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie));
+		//cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie));
 		//if (cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie))) {
 			// 登録成功
 			//request.setAttribute("message", "登録が成功しました。");
@@ -69,18 +74,29 @@ public class CalorieRegistServlet extends HttpServlet {
 		//}
 		// 結果ページにフォワードする
 
-		  String forwardPath = "/WEB-INF/jsp/calorie_regist.jsp";
-		    if (result) {
-		        request.setAttribute("message", "登録が成功しました。");
-		    } else {
-		        request.setAttribute("message", "登録が失敗しました。");
-		    }
+		//  String forwardPath = "/WEB-INF/jsp/calorie_regist.jsp";
+		  //  if (result) {
+		  //      request.setAttribute("message", "登録が成功しました。");
+		  //  } else {
+		 //       request.setAttribute("message", "登録が失敗しました。");
+		  //  }
+
 		    /*
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
 		dispatcher.forward(request, response);
 		*/
-	        RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
-	        dispatcher.forward(request, response);
+	     //   RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+	      //  dispatcher.forward(request, response);
+		//デバッグ
+		if (insertSuccess) {
+
+			response.getWriter().write("ユーザー登録に成功しました。");
+
+			} else {
+
+			response.getWriter().write("ユーザー登録に失敗しました。");
+
+			}
 	}
 
 	// termina el doPost
