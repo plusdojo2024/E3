@@ -11,18 +11,27 @@
 	console.log(SC);
 
  //ここからキャットネスの名前をつけるモーダルウインドウについて
-// モーダルを表示する関数
+// モーダルど画像を変更について
 	if(SC >= 500){
 		 let newImageSrc = "/E3/img/子猫背景透過.gif";
 		 let imageElement = document.getElementById('myImage');
     		imageElement.src = newImageSrc;
 		 document.getElementById("nameModal").style.display = "block";
-    }else if(SC >= 1500){
-
-    }else if(SC >= 3500){
-
-    }else if(SC >= 7500){
-
+    }
+	if(SC >= 1500){
+		 let newImageSrc = "/E3/img/大人猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
+    }
+	if(SC >= 3500){
+		 let newImageSrc = "/E3/img/コス猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
+    }
+	if(SC >= 7500){
+		 let newImageSrc = "/E3/img/羽猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
     }
 
    //モーダルを閉じるための関数
@@ -38,20 +47,21 @@
 			}
     });
 
-  //一応、ここまで
+  //キャットネスの名前については、ここまで
 
 
 
-//提案メッセージについて
+//ランダムメッセージについて
 const messages = [
-    "もっと運動しろや",
-    "その調子やで",
-    "運動しすぎや",
-    "おまえ死ぬぞ!!"
+    "今日も頑張れー!",
+    "寝ちゃおうよー。",
+    "今日は晴れだよ!多分!",
+    "今日は平日かな。それとも休日かな。",
+	"猫なのかって？、自分でも分かんない。"
 ];
 const num = Math.floor(Math.random() * messages.length);
 document.getElementById("message").textContent = messages[num];
-//ここまでだお
+//ここまで
 
 
 
@@ -68,7 +78,7 @@ document.getElementsByClassName("close")[0].addEventListener("click", function()
 	var weight = document.getElementById('weight').value;
 	var goal_weight = document.getElementById('goal_weight').value;
 	if(!user_name || !height || !weight || !goal_weight){
-	  document.getElementById("user_alert_message").textContent = "全て必須入力です。";
+	  document.getElementById("user_alert_message").textContent = "全て必須入力です。All fields are required.";
 		}else{
 			document.getElementById("userModal").style.display = "none";
       		// データを送信する処理をここに追加する
@@ -78,8 +88,7 @@ document.getElementsByClassName("close")[0].addEventListener("click", function()
 	//sendData();
 	//document.getElementById("userModal").style.display = "none";
   });
-
-
+//ここまでが、アカウント情報のモーダルウインドウについて
 
 
 // データを送信する関数
@@ -116,4 +125,48 @@ function sendData() {
  console.log(join_data);
 xhr.send(join_data);
   }
-//ここまで
+//送信関数はここまで
+
+
+	//言語切り替えについて
+    function translateText() {
+
+         // チェックされているラジオボタンの値を取得
+         var selectedOption = document.querySelector('input[name="languages"]:checked');
+
+
+    if(selectedOption === en){
+    console.log("Option 2 is selected");
+
+	//アカウントのモーダルウインドウの文字について
+	document.getElementById("user_text1").textContent = "Account Information:";
+	document.getElementById("user_text2").textContent = "User Name:";
+	document.getElementById("user_text3").textContent = "Height:";
+	document.getElementById("user_text4").textContent = "Weight:";
+	document.getElementById("user_text5").textContent = "Goal Weight:";
+	document.getElementById("user_text6").textContent = "Change language(With some exceptions):";
+	document.getElementById("user_text7").textContent = "LogOut";
+	document.getElementById("user_text8").textContent = "Account Delete";
+
+	document.getElementById("btn_text1").textContent = "Calorie Regist";
+	document.getElementById("btn_text2").textContent = "Walking";
+
+}else if(selectedOption === ja){
+    console.log("Option 1 is selected");
+
+	//アカウントのモーダルウインドウの文字について
+	document.getElementById("user_text1").textContent = "アカウント情報:";
+	document.getElementById("user_text2").textContent = "ユーザーネーム:";
+	document.getElementById("user_text3").textContent = "身長:";
+	document.getElementById("user_text4").textContent = "体重:";
+	document.getElementById("user_text5").textContent = "目標体重:";
+	document.getElementById("user_text6").textContent = "言語切り替え(一部を除く):";
+	document.getElementById("user_text7").textContent = "ログアウト";
+	document.getElementById("user_text8").textContent = "アカウント削除";
+
+	document.getElementById("btn_text1").textContent = "カロリー登録";
+	document.getElementById("btn_text2").textContent = "お散歩";
+
+}
+}
+
