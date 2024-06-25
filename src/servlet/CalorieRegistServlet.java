@@ -91,6 +91,9 @@ public class CalorieRegistServlet extends HttpServlet {
 		if (insertSuccess) {
 
 			response.getWriter().write("ユーザー登録に成功しました。");
+	           //main.jsp　未完了からコメントにしました。
+		 	//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+    		//dispatcher.forward(request, response);
 
 			} else {
 
