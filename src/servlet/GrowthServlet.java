@@ -47,7 +47,7 @@ public class GrowthServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
 			dispatcher.forward(request, response);
 		//ログイン状態	
-			request.setAttribute("user_id", user_id);
+		//	request.setAttribute("user_id", user_id);
 			
 			
 			
