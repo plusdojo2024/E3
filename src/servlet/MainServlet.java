@@ -6,8 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +47,7 @@ public class MainServlet extends HttpServlet {
 
          // データベース接続とクエリ実行
             try (Connection conn = DriverManager.getConnection(url, user, password)) {
-                //String sql = "SELECT * FROM Users WHERE id = 1"; // SQL文を適切に書き換える
-                String sql = "SELECT * FROM Users WHERE user_id = 'hyogo_satou'"; // SQL文を適切に書き換える
+                String sql = "SELECT * FROM Users WHERE id = 1"; // SQL文を適切に書き換える
                 PreparedStatement statement = conn.prepareStatement(sql);
                 //statement.setInt(1, 1); // idが1のレコードを取得する例
                 ResultSet resultSet = statement.executeQuery();
@@ -93,8 +90,7 @@ public class MainServlet extends HttpServlet {
                 }
 
                 // サムカロリーを持ってくる
-                //sql = "SELECT  * FROM SUMCALORIES WHERE id = 1"; // SQL文を適切に書き換える
-                sql = "SELECT  * FROM SUMCALORIES WHERE user_id = 'hyogo_satou'"; // SQL文を適切に書き換える
+                sql = "SELECT  * FROM SUMCALORIES WHERE id = 1"; // SQL文を適切に書き換える
                 statement = conn.prepareStatement(sql);
                 //statement.setInt(1, 1); // idが1のレコードを取得する例
                 resultSet = statement.executeQuery();
@@ -106,28 +102,6 @@ public class MainServlet extends HttpServlet {
                     Sum_Calorie = resultSet.getDouble("SUM_CALORIE");
                     SC = String.valueOf(Sum_Calorie);
                     System.out.println("合計消費カロリー : "+ SC);
-                }
-
-              //日付を持ってくる
-                //今日の日付を取得
-                Date today = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String todayStr = sdf.format(today);
-                System.out.println("今日の日付 : "+ todayStr);
-
-                //データの日付を取得
-                //sql = "SELECT  * FROM SUMCALORIES WHERE id = 1"; // SQL文を適切に書き換える
-                sql = "SELECT * FROM CALORIES WHERE user_id = 'hyogo_satou'"; // SQL文を適切に書き換える
-                statement = conn.prepareStatement(sql);
-                //statement.setInt(1, 1); // idが1のレコードを取得する例
-                resultSet = statement.executeQuery();
-
-
-                String date = "";
-
-                if (resultSet.next()) {
-                    date = resultSet.getString("DAYS");
-                    System.out.println("データの追加日時 : "+ date);
                 }
 
 

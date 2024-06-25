@@ -1,28 +1,14 @@
 /**
  *
  */
-//ここからキャットネスウインドウについて
+
+ //ここからキャットネスウインドウについて
     let random = 1
     console.log( random );
-
-	var Sum_Calorie = document.getElementById('Sum_Calorie').value;
-	console.log(Sum_Calorie);
-	let SC = parseFloat(Sum_Calorie);
-	console.log(SC);
-
  //ここからキャットネスの名前をつけるモーダルウインドウについて
 // モーダルを表示する関数
-	if(SC >= 500){
-		 let newImageSrc = "/E3/img/子猫背景透過.gif";
-		 let imageElement = document.getElementById('myImage');
-    		imageElement.src = newImageSrc;
-		 document.getElementById("nameModal").style.display = "block";
-    }else if(SC >= 1500){
-
-    }else if(SC >= 3500){
-
-    }else if(SC >= 7500){
-
+    if(random == 1){
+        document.getElementById("nameModal").style.display = "block";
     }
 
    //モーダルを閉じるための関数

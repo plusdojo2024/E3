@@ -41,7 +41,7 @@ input[type='password']:focus{
 .idpwbox {
 padding-top:30px;
 text-align:center;
-
+  
 }
 .idpwinfo {
 padding-top:30px;
@@ -60,10 +60,10 @@ button{
   position:relative;
   top: 40px;
 }
-input[type="submit"].button{
+.touroku{
   font-family: 'DotGothic16' ,sans-serif;
   padding:0.3em;
   border-radius: 10px;
-  border-color: #F2CFEE;
-  background-color: #F2CFEE;
+  border-color: #000000;
+  background-color: #FFFFFF;
 }
