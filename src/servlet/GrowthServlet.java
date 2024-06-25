@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CaloriesDAO;
+
 /**
  * Servlet implementation class GrowthServlet
  */
@@ -27,7 +29,16 @@ public class GrowthServlet extends HttpServlet {
 					response.sendRedirect("/E3/LoginServlet");
 					return;
 				}
-
+		
+		//改造ここから
+        String userId = /*request.getParameter("userId")*/"7499";
+        CaloriesDAO caloriesDAO = new CaloriesDAO();
+        double totalCalories = caloriesDAO.getTotalCaloriesByUserId(userId);
+        request.setAttribute("totalCalories", totalCalories);
+        // Redirigir a la página growth.jsp
+        request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp").forward(request, response);
+        //改造ここまで
+        
 		// 成長記録（図鑑）ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
 			dispatcher.forward(request, response);
@@ -36,8 +47,12 @@ public class GrowthServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		//改造ここから
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				doGet(request, response);
+		//改造ここまで
+				
+				// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/E3/LoginServlet");

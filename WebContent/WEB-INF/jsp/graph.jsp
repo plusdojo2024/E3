@@ -15,9 +15,9 @@
 <body>
 <header>
 		<div class="header">
-			<a href="/E3/GrowthServlet"><img src="/E3/img/TOPcopy.png"></a>
+			<a href="/E3/MainServlet"><img src="/E3/img/TOPcopy.png"></a>
 			<div class="title">
-				<input type="text" name="user_name" value="蓋河内歩" readonly="readonly">さんの<br>
+				<input type="text" name="user_name" value="{user_name}" readonly="readonly">さんの<br>
 				活動記録
 			</div>
 		</div>
@@ -25,7 +25,23 @@
 	<main>
 		<div class="balloon5">
 	        <div class ="faceicon">
-	            <img src="/E3/img/tamago.gif" width="70" height="75" alt="卵">
+	            <c:choose>
+		    		<c:when test="${totalCalories < 500}">
+		        		<img src="/E3/img/tamago.gif" width="100px">
+		        	</c:when>
+		    		<c:when test="${totalCalories < 1500}">
+		        		<img src="/E3/img/子猫背景透過.gif" width="100px">
+		        	</c:when>
+		        	<c:when test="${totalCalories < 3500}">
+		        		<img src="/E3/img/大人猫背景透過.gif" width="100px">
+		        	</c:when>
+		        	<c:when test="${totalCalories < 7500}">
+		        		<img src="/E3/img/コス猫背景透過.gif" width="100px">
+		        	</c:when>
+		        	<c:when test="${totalCalories >= 7500}">
+		        		<img src="/E3/img/羽猫背景透過.gif" width="100px">
+		        	</c:when>
+				</c:choose>
 	        </div>
 	        <div class="chatting">
 	            <div class="says">
@@ -33,38 +49,7 @@
 	        	</div>
 	        </div>
 	    </div>
-		<!-- 応援メッセージ表示 <div class="cheer">
-			
-			
 		
-			<c:choose>
-				<c:when test="${before}">
-					<p>応援メッセージ</p>
-				</c:when>
-			</c:choose>
-			
-			
-			<img src="/E3/img/卵背景透過.png" width="25%">
-			
-			<c:choose>
-	    		<c:when test="${sum_calories < 500}">
-	        		<img src="/E3/img/		.png" width="10%">
-	        	</c:when>
-	    		<c:when test="${sum_calories < 1500}">
-	        		<img src="/E3/img/		.png" width="10%">
-	        	</c:when>
-	        	<c:when test="${sum_calories < 3500}">
-	        		<img src="/E3/img/		.png" width="10%">
-	        	</c:when>
-	        	<c:when test="${sum_calories < 7500}">
-	        		<img src="/E3/img/		.png" width="10%">
-	        	</c:when>
-	        	<c:when test="${sum_calories >= 7500}">
-	        		<img src="/E3/img/		.png" width="10%">
-	        	</c:when>
-			</c:choose>
-			
-		</div>-->
 <div class="graph_back"><!-- graph -->
 	<div class="exchange_buttons">
 		<button id="weekButton" onclick="showTab('week')" class="active-button exchange_button">週</button>
