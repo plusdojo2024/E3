@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/E3/css/user_regist.css">
 
 <meta charset="UTF-8">
-<title>Registro de Usuario</title>
+<title>ふぃたごっち</title>
 </head>
 <body>
 <div class="userbox">
@@ -24,7 +24,7 @@
     <input type="text" name="user_name" value="" placeholder="名前" maxlength="100">
 
     <p>身長<br></p>
-    <input type="text" name="heght" value="" placeholder="身長" maxlength="5">  <!-- Corregido typo en el nombre -->
+    <input type="text" name="height" value="" placeholder="身長" maxlength="5">  <!-- Corregido typo en el nombre -->
 
     <p>体重</p>
     <input type="text" name="weight" value="" placeholder="体重" maxlength="5">

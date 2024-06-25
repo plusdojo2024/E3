@@ -23,7 +23,7 @@
 
 <form id="idpw_box" method="POST" action="/E3/IdpwRegistServlet">
     <p>ID<br></p>
-          <input type="text" name="ID" value=""placeholder="ID" maxlength=20 minlength=5>
+          <input type="text" name="id" value=""placeholder="ID" maxlength=20 minlength=5>
 
     <p>パスワード<br></p>
           <input type="password" name="password" value="" placeholder="パスワード" maxlength=20 minlength=5><br>
