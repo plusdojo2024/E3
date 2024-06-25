@@ -136,13 +136,6 @@ opacity: 0;
 	margin: auto;
 	padding:38px 0;
 }
-.c-carousel__main-image_secret {
-	display: block;
-	width: 80%;
-	margin: auto;
-	align-items: center;
-	padding-top :30px;
-}
 
 .c-carousel__main-control-item {
 	  display: none;
