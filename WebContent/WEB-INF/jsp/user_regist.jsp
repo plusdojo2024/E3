@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/E3/css/common.css">
 <link rel="stylesheet" href="/E3/css/user_regist.css">
-<script src="/E3/js/user_regist.js"></script>
+
 <meta charset="UTF-8">
 <title>Registro de Usuario</title>
 </head>
 <body>
 <div class="userbox">
     <h1 id="logo">
-        <a href="login.html"><img src="ふぃたごっち.png" width="250" height="100" alt="ふぃたごっち"></a>
+        <a href="login.html"><img src="/E3/img/ふぃたごっち.png" width="250" height="100" alt="ふぃたごっち"></a>
     </h1>
 </div>
 
@@ -40,9 +40,6 @@
     <p>目標体重</p>
     <input type="text" name="goal_weight" value="" placeholder="目標体重" maxlength="5">
 
-    <p>キャラクター名</p>
-    <input type="text" name="cat" value="" placeholder="キャラクター名" maxlength="20"> <!-- Corregido el nombre -->
-
     <p><span id="error_message"></span><br></p>
     <p><input type="submit" value="登録" class="touroku"><br></p>
 </form>
@@ -51,5 +48,6 @@
     <p>&copy;2024 MySTAR ALL Rights Reserved</p>
 </div>
 </div>
+<script src="/E3/js/user_regist.js"></script>
 </body>
 </html>
