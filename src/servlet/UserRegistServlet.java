@@ -90,14 +90,14 @@ return;
         String weightStr = request.getParameter("weight");
         String genderStr = request.getParameter("gender");
         String goal_weightStr = request.getParameter("goal_weight");
-        String cat = request.getParameter("cat");
+        //String cat = request.getParameter("cat");
 
         System.out.println("user_name: " + user_name);
         System.out.println("heightStr: " + heightStr);
         System.out.println("weightStr: " + weightStr);
         System.out.println("genderStr: " + genderStr);
         System.out.println("goal_weightStr: " + goal_weightStr);
-        System.out.println("cat: " + cat);
+        //System.out.println("cat: " + cat);
 
         double height = 0.0;
         double weight = 0.0;
@@ -123,11 +123,14 @@ return;
         }
 
         UsersDAO nDao = new UsersDAO();
-        Users user = new Users(0, user_id, password, user_name, height, weight, gender, goal_weight, cat);
+        Users user = new Users(0, user_id, password, user_name, height, weight, gender, goal_weight/*, cat*/);
         boolean insertSuccess = nDao.insertUsers(user);
 
         if (insertSuccess) {
-            response.getWriter().write("ユーザー登録に成功しました。");
+           response.getWriter().write("ユーザー登録に成功しました。");
+           //main.jsp　未完了からコメントにしました。
+        	//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+    		//dispatcher.forward(request, response);
         } else {
             response.getWriter().write("ユーザー登録に失敗しました。");
         }
