@@ -12,26 +12,23 @@
 
  //ここからキャットネスの名前をつけるモーダルウインドウについて
 // モーダルど画像を変更について
-	if(SC >= 500){
-		 let newImageSrc = "/E3/img/子猫背景透過.gif";
-		 let imageElement = document.getElementById('myImage');
-    		imageElement.src = newImageSrc;
-		 document.getElementById("nameModal").style.display = "block";
-    }
-	if(SC >= 1500){
-		 let newImageSrc = "/E3/img/大人猫背景透過.gif";
-		 let imageElement = document.getElementById('myImage');
-    		imageElement.src = newImageSrc;
-    }
-	if(SC >= 3500){
-		 let newImageSrc = "/E3/img/コス猫背景透過.gif";
-		 let imageElement = document.getElementById('myImage');
-    		imageElement.src = newImageSrc;
-    }
 	if(SC >= 7500){
 		 let newImageSrc = "/E3/img/羽猫背景透過.gif";
 		 let imageElement = document.getElementById('myImage');
     		imageElement.src = newImageSrc;
+    }else if(SC >= 3500){
+		 let newImageSrc = "/E3/img/コス猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
+    }else if(SC >= 1500){
+		 let newImageSrc = "/E3/img/大人猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
+    } else if(SC >= 500){
+		 let newImageSrc = "/E3/img/子猫背景透過.gif";
+		 let imageElement = document.getElementById('myImage');
+    		imageElement.src = newImageSrc;
+		 document.getElementById("nameModal").style.display = "block";
     }
 
    //モーダルを閉じるための関数
