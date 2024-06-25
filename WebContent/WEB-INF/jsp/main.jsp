@@ -74,18 +74,18 @@
       <span class="close">&times;</span>
       <br>
       <h2 id="user_text1">アカウント情報</h2>
-      <img id="profileImage" src="" alt="プロフィール画像" width="75px" height="75px" onclick="selectImage()">
+      <img id="profileImage" src="/E3/img/tamago.gif" alt="プロフィール画像" width="75px" height="75px" onclick="selectImage()">
       <br>
       <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
       <form id="myForm">
         <label for="user_name" id="user_text2">ユーザーネーム:</label><br>
-        <input type="text" id="user_name" name="user_name" value="<%= request.getAttribute("User_Name") %>" placeholder="必須入力"><br>
+        <input type="text" id="user_name" name="user_name" value="<%= request.getAttribute("User_Name") %>" placeholder="必須入力">様<br>
         <label for="height" id="user_text3">身長:</label><br>
-        <input type="text" id="height" name="height" value="<%= request.getAttribute("Height") %>" placeholder="必須入力"><br>
+        <input type="text" id="height" name="height" value="<%= request.getAttribute("Height") %>" placeholder="必須入力">cm<br>
         <label for="weight" id="user_text4">体重:</label><br>
-        <input type="text" id="weight" name="weight" value="<%= request.getAttribute("Weight") %>" placeholder="必須入力"><br>
+        <input type="text" id="weight" name="weight" value="<%= request.getAttribute("Weight") %>" placeholder="必須入力">kg<br>
         <label for="goal_weight" id="user_text5">目標体重:</label><br>
-        <input type="text" id="goal_weight" name="goal_weight" value="<%= request.getAttribute("Goal_Weight") %>" placeholder="必須入力"><br>
+        <input type="text" id="goal_weight" name="goal_weight" value="<%= request.getAttribute("Goal_Weight") %>" placeholder="必須入力">cm<br>
       </form>
 	<p id="user_alert_message" style="color: red;"></p>
       ーーーーーーーーーーー
