@@ -74,7 +74,7 @@
       <span class="close">&times;</span>
       <br>
       <h2 id="user_text1">アカウント情報</h2>
-      <img id="profileImage" src="/E3/img/tamago.gif" alt="プロフィール画像" width="75px" height="75px" onclick="selectImage()">
+      <img id="profileImage" src="/E3/img/Yuzar_Icon.png" alt="プロフィール画像" width="75px" height="75px" onclick="selectImage()">
       <br>
       <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
       <form id="myForm">
