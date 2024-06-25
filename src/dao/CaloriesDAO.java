@@ -228,4 +228,47 @@ public class CaloriesDAO {
 		// 結果を返す
 		return CaloriesList;
 	}
+	//改造ここから
+	public double getTotalCaloriesByUserId(String userId) {
+        Connection conn = null;
+        double totalCalories = 0;
+
+        try {
+            // JDBCドライバを読み込む
+            Class.forName("org.h2.Driver");
+
+            // データベースに接続する
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E3", "sa", "");
+
+            // SQL文を準備する
+            String sql = "SELECT SUM(calorie) FROM CALORIES WHERE user_id = ?";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+
+            // SQL文を完成させる
+            pStmt.setString(1, userId);
+
+            // SQL文を実行し、結果表を取得する
+            ResultSet rs = pStmt.executeQuery();
+
+            if (rs.next()) {
+                totalCalories = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // データベースを切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return totalCalories;
+    }
+	//改造ここまで
 }

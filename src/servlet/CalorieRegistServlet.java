@@ -56,6 +56,7 @@ public class CalorieRegistServlet extends HttpServlet {
 
 		// 登録処理を行う
 		CaloriesDAO cDao = new CaloriesDAO();
+        boolean result = cDao.insert(0, user_id, Double.parseDouble(calorie));
 		//　データ型は外部設計書に従って変更されます。
 		cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie));
 		//if (cDao.insert(0, user_id,/*Integer.parseInt(ex_ID),*/ Double.parseDouble(calorie))) {
@@ -67,8 +68,19 @@ public class CalorieRegistServlet extends HttpServlet {
 		//	request.setAttribute("message", "登録が失敗しました。");
 		//}
 		// 結果ページにフォワードする
+
+		  String forwardPath = "/WEB-INF/jsp/calorie_regist.jsp";
+		    if (result) {
+		        request.setAttribute("message", "登録が成功しました。");
+		    } else {
+		        request.setAttribute("message", "登録が失敗しました。");
+		    }
+		    /*
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calorie_regist.jsp");
 		dispatcher.forward(request, response);
+		*/
+	        RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+	        dispatcher.forward(request, response);
 	}
 
 	// termina el doPost
