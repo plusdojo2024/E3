@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/E3/css/common.css">
 <link rel="stylesheet" href="/E3/css/idpw_regist.css">
-<script src="/E3/js/idpw_regist.js"></script>
+
 <meta charset="UTF-8">
 <title>ふぃたごっち</title>
 </head>
@@ -14,7 +14,7 @@
 
 		<div class="idpwbox">
   			<h1 id="logo">
-    			<a href="/E3/LoginServlet"><img src="/E3/img/.png" width="300" height="150" alt="ふぃたごっち"></a>
+    			<a href="/E3/LoginServlet"><img src="/E3/img/ふぃたごっち.png" width="300" height="150" alt="ふぃたごっち"></a>
           </h1>
     </div>
 
@@ -26,7 +26,7 @@
           <input type="text" name="ID" value=""placeholder="ID" maxlength=20 minlength=5>
 
     <p>パスワード<br></p>
-          <input type="password" name="password" value="" placeholder="パスワード" maxlength=20 minlength=5>
+          <input type="password" name="password" value="" placeholder="パスワード" maxlength=20 minlength=5><br>
 
 
 
@@ -36,13 +36,16 @@
 
 
 </form>
-
- <a href="/E3/LoginServlet" class="touroku">ログインへ</a>
+	<form action="LoginServlet" method="get">
+    	<input class="button" type="submit" value="ログインへ">
+    </form>
+ <!-- <a href="/E3/LoginServlet" class="touroku">ログインへ</a> -->
      <!--  <p><input type= "submit" value="ログインへ" class="touroku"><br></p> -->
 </div>
 <div id="footer">
 
     <p>&copy;2024 MySTAR ALL Rights Reserved</p>
     </div>
+    <script src="/E3/js/idpw_regist.js"></script>
 </body>
 </html>

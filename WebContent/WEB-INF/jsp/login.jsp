@@ -7,14 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/E3/css/common.css">
 <link rel="stylesheet" href="/E3/css/login.css">
-
+<script src="/E3/js/login.js"></script>
 <title>ふぃたごっち</title>
 </head>
 <body>
 
   			<h1 id="logo">
-    			<a href="login.html"><img src="ふぃたごっち.png" width="300" height="150" alt="ふぃたごっち"></a>
-          
+    			<a href="login.html"><img src="/E3/img/ふぃたごっち.png" width="300" height="150" alt="ふぃたごっち"></a>
+
   			</h1>
 
 
@@ -24,20 +24,21 @@
 <form id="login_form" method="POST" action="/E3/LoginServlet">
         <p>ID<br></p>
         <input type="text" name="id" value=""placeholder="ID">
-          
+
         <p>パスワード<br></p>
         <input type="password" name="password" value=""placeholder="パスワード">
 
       <p><input type= "submit" value="ログイン" class="login"><br></p>
-      
+
       <span id="error_message"></span>
 
-      <p><button>新規登録へ</button></p>
+
 </form>
+      <form action="IdpwRegistServlet" method="get">
+          <input class="button" type="submit" value="新規登録へ">
+      </form>
     <p>&copy;2024 MySTAR ALL Rights Reserved</p>
 </div>
-
-<script src="/E3/js/login.js"></script>
 </body>
 </html>
 

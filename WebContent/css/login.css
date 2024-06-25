@@ -41,14 +41,14 @@ input[type='password']:focus{
 .loginbox {
 padding-top:30px;
 text-align:center;
-  
+
 }
 .logininfo {
 padding-top:30px;
 text-align:center;
 }
 
-button{
+input[type="submit"].login{
   font-family: 'DotGothic16' ,sans-serif;
   padding:0.3em;
   border-radius: 10px;
