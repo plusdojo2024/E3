@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class GrowthServlet
@@ -21,12 +22,12 @@ public class GrowthServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//		HttpSession session = request.getSession();
-		//		if (session.getAttribute("id") == null) {
-		//			response.sendRedirect("/E3/LoginServlet");
-		//			return;
-		//		}
-		
+				HttpSession session = request.getSession();
+				if (session.getAttribute("user_id") == null) {
+					response.sendRedirect("/E3/LoginServlet");
+					return;
+				}
+
 		// 成長記録（図鑑）ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
 			dispatcher.forward(request, response);
@@ -37,28 +38,29 @@ public class GrowthServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//		HttpSession session = request.getSession();
-		//		if (session.getAttribute("id") == null) {
-		//			response.sendRedirect("/E3/LoginServlet");
-		//			return;
-		//		}
-		
+				HttpSession session = request.getSession();
+				if (session.getAttribute("user_id") == null) {
+					response.sendRedirect("/E3/LoginServlet");
+					return;
+				}
+
 		// 成長記録（図鑑）ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/growth.jsp");
 			dispatcher.forward(request, response);
-		//ログイン状態	
+		//ログイン状態
+			String user_id = (String)(session.getAttribute("user_id"));
 			request.setAttribute("user_id", user_id);
-			
-			
-			
+
+
+
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			double SUM_CALORIE = Double.parseDouble(request.getParameter("SUM_CALORIE"));
-			
+
 			// JSPにデータを送信
             request.setAttribute("User_Name", SUM_CALORIE);
             request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
-			
+
 	}
 
 }

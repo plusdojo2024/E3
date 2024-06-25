@@ -25,7 +25,7 @@ public class DeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/E3/LoginServlet");
 		}
 
@@ -50,8 +50,8 @@ public class DeleteServlet extends HttpServlet {
             pStmt.close();
             con.close();
 
-            //リクエストスコープへ格納
-            request.setAttribute("user_id", user_id);
+            //セッションオブジェクトへ格納
+            //session.setAttribute("user_id", user_id);
 
             // 更新が成功したことをクライアントに返す
             response.getWriter().write("データが消去されました");

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MainServlet
@@ -25,12 +26,12 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*もしもログインしていなかったらログインサーブレットにリダイレクトする*/
 				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
+				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/E3/LoginServlet");
 					return;
-				} */
+				}
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		// JDBCドライバの読み込み
@@ -134,8 +135,10 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGet(request, response);
-		//request.setAttribute("user_id", user_id);
+		doGet(request, response);
+		HttpSession session = request.getSession();
+		String user_id = (String)(session.getAttribute("user_id"));
+		session.setAttribute("user_id", user_id);
 	}
 
 }

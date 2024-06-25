@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class GraphServlet
@@ -21,16 +22,16 @@ public class GraphServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//		HttpSession session = request.getSession();
-			//	if (session.getAttribute("id") == null) {
-		//			response.sendRedirect("/E3/LoginServlet");
-		//			return;
-		//		}
-		
+				HttpSession session = request.getSession();
+				if (session.getAttribute("user_id") == null) {
+					response.sendRedirect("/E3/LoginServlet");
+					return;
+				}
+
 		//ヘッダーに表示するユーザー氏名を取得する
 				request.setCharacterEncoding("UTF-8");
 				String user_name = request.getParameter("user_name");
-				
+
 		// 活動記録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 			dispatcher.forward(request, response);
@@ -41,8 +42,10 @@ public class GraphServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//ログイン状態	
-		//	request.setAttribute("user_id", user_id);
+		//ログイン状態
+		HttpSession session = request.getSession();
+		String user_id = (String)(session.getAttribute("user_id"));
+		session.setAttribute("user_id", user_id);
 	}
 
 }

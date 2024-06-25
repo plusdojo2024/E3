@@ -24,11 +24,11 @@ public class WalkServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/E3/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_id") == null) {
+			response.sendRedirect("/E3/LoginServlet");
+			return;
+		}
 
 
 
@@ -45,10 +45,11 @@ public class WalkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/E3/LoginServlet");
 			return;
 		}
+
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -65,6 +66,9 @@ public class WalkServlet extends HttpServlet {
 		else {// 登録失敗
 			request.setAttribute("message", "登録が失敗しました。");
 		}
+
+		//セッションオブジェクトに値を格納
+		session.setAttribute("user_id", user_id);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

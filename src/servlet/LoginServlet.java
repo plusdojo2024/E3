@@ -37,15 +37,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String user_id = request.getParameter("user_id");
+		String password = request.getParameter("password");
 
 		// ログイン処理を行う
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.isLoginOK(new Users(id, pw))) {	// ログイン成功
+		if (iDao.isLoginOK(new Users(user_id, password))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("user_id", new LoginUser(user_id));
 
 			// メイン画面にリダイレクトする
 			response.sendRedirect("/E3/MainServlet");
