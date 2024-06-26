@@ -17,6 +17,8 @@ public class CaloriesDAO {
 		Connection conn = null;
 		boolean result = false;
 
+		 Double Sum_Calorie = 0.0;
+
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -39,18 +41,31 @@ public class CaloriesDAO {
 			}
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-					sql = "UPDATE SUMCALORIES  SET SUM_CALORIE=? where user_id = 'hyogo_satou'";
+					sql = "SELECT  * FROM SUMCALORIES WHERE user_id = ?";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql);
+					pStmt2.setString(1, user_id);
+				ResultSet resultSet = pStmt2.executeQuery();
 
-						// SQL文を完成させる
-							//pStmt2.setString(2, user_id);
-							pStmt2.setDouble(1, calorie);
-							System.out.println("カロリー：" + calorie);
+				 Sum_Calorie = calorie;
 
-						// SQL文を実行する
-						if (pStmt2.executeUpdate() == 1) {
-							result = true;
-						}
+				 if (resultSet.next()) {
+					 	Sum_Calorie += resultSet.getDouble("SUM_CALORIE");
+	                }
+
+
+
+			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
+			sql = "UPDATE SUMCALORIES  SET SUM_CALORIE=? where user_id = ?";
+		PreparedStatement pStmt3 = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+				pStmt3.setDouble(1, Sum_Calorie);
+				pStmt3.setString(2, user_id);
+
+			// SQL文を実行する
+			if (pStmt3.executeUpdate() == 1) {
+			result = true;
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

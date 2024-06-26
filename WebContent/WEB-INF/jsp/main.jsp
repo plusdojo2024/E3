@@ -56,7 +56,6 @@
 
 	<br>
         <b>現在の総消費カロリー：<%= request.getAttribute("Sum_Calorie") %>kcal</b><br>
-        <p>合計カロリー: ${totalCalories} kcal</p>
         <b>(Current total calories burned：<%= request.getAttribute("Sum_Calorie") %>kcal)</b><br>
         <input type="text" id="Sum_Calorie" name="Sum_Calorie" value="<%= request.getAttribute("Sum_Calorie") %>" style="display: none;">
 

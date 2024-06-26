@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -142,6 +143,9 @@ public class MainServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_id = (String)(session.getAttribute("user_id"));
 		session.setAttribute("user_id", user_id);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+		dispatcher.forward(request, response);
 		}
 
 }

@@ -25,11 +25,11 @@
     </th>
     <th>
     <!-- フォームー追加 -->
-    <form id="registerForm" action="/E3/WalkServlet" method="post">
-        <!-- 情報for send -->
-        <input type="hidden" id="caloriesInput" name="calorie" value="">
-        <input type="submit" id="register" name="submit" value="登録" onclick="setCalories()">
-    </form>
+    <form id="registerForm" action="/E3/WalkServlet" method="post" onsubmit="return setCalories()">
+    <!-- 情報for send -->
+    <input type="hidden" id="caloriesInput" name="calorie" value="">
+    <input type="submit" id="register" name="submit" value="登録">
+	</form>
     </th>
     </tr>
     </table>
