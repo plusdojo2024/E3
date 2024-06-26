@@ -27,7 +27,7 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*もしもログインしていなかったらログインサーブレットにリダイレクトする*/
-				HttpSession session = request.getSession();
+		 		HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/E3/LoginServlet");
 					return;
@@ -45,15 +45,15 @@ public class MainServlet extends HttpServlet {
             String user = "sa"; // デフォルトでは"sa"
             String password = ""; // パスワードが設定されている場合は設定
 
-            /* 「user_id」取得
-            String user_id = request.getAttribute("user_id").toString();
-            System.out.println(user_id); */
+            //「user_id」取得
+            String user_id =  (String) session.getAttribute("user_id");
+            System.out.println("user_ID:" + user_id);
 
          // データベース接続とクエリ実行
             try (Connection conn = DriverManager.getConnection(url, user, password)) {
-                String sql = "SELECT * FROM Users WHERE user_id = 'hyogo_satou'"; // SQL文を適切に書き換える
+                String sql = "SELECT * FROM Users WHERE user_id = ?"; // SQL文を適切に書き換える
                 PreparedStatement statement = conn.prepareStatement(sql);
-                //statement.setString(1, "user_id"); // idが1のレコードを取得する例
+                statement.setString(1, user_id); // idが1のレコードを取得する例
                 ResultSet resultSet = statement.executeQuery();
                 //resultSet.next();
 
@@ -142,6 +142,6 @@ public class MainServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_id = (String)(session.getAttribute("user_id"));
 		session.setAttribute("user_id", user_id);
-	}
+		}
 
 }

@@ -53,7 +53,7 @@ public class CalorieRegistServlet extends HttpServlet {
 		// 改造（ここから）
 		//String ex_ID = request.getParameter("ex_ID");
 		//String user_id = request.getParameter("user_id");
-		String user_id = "tokyo_tanaka";
+		String user_id = "hyogo_satou";
 
 		String calorie = request.getParameter("calorie");
 		// 改造（ここまで）
@@ -90,10 +90,11 @@ public class CalorieRegistServlet extends HttpServlet {
 		//デバッグ
 		if (insertSuccess) {
 
-			response.getWriter().write("ユーザー登録に成功しました。");
+			//response.getWriter().write("ユーザー登録に成功しました。");
 	           //main.jsp　未完了からコメントにしました。
 		 	//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
-    		//dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/MainServlet");
+    		dispatcher.forward(request, response);
 
 			} else {
 

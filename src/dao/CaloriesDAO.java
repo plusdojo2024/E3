@@ -31,11 +31,26 @@ public class CaloriesDAO {
 			// SQL文を完成させる
 				pStmt.setString(1, user_id);
 				pStmt.setDouble(2, calorie);
+				System.out.println("カロリー：" + calorie);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+
+			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
+					sql = "UPDATE SUMCALORIES  SET SUM_CALORIE=? where user_id = 'hyogo_satou'";
+				PreparedStatement pStmt2 = conn.prepareStatement(sql);
+
+						// SQL文を完成させる
+							//pStmt2.setString(2, user_id);
+							pStmt2.setDouble(1, calorie);
+							System.out.println("カロリー：" + calorie);
+
+						// SQL文を実行する
+						if (pStmt2.executeUpdate() == 1) {
+							result = true;
+						}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

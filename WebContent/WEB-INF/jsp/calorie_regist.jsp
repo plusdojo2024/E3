@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="header">
-    <a href="/E3/LoginServlet"> <img src="/E3/img/TOP.png" alt="TOP"></a>
+    <a href="/E3/MainServlet"> <img src="/E3/img/TOP.png" alt="TOP"></a>
     <div class="title">カロリー登録</div>
 </div>
 <div class="form-container">

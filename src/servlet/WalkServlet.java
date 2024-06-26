@@ -55,6 +55,7 @@ public class WalkServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String user_id = request.getParameter("user_id");
 		String calorie = request.getParameter("calorie");
+		System.out.println("カロリー：" + calorie);
 
 		// 登録処理を行う
 		CaloriesDAO cDao = new CaloriesDAO();
@@ -71,7 +72,7 @@ public class WalkServlet extends HttpServlet {
 		session.setAttribute("user_id", user_id);
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
 		dispatcher.forward(request, response);
 	}
 }

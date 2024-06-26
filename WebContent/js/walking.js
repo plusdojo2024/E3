@@ -1,4 +1,5 @@
 'use strict'
+		event.preventDefault();
         var map;
         var directionsService;
         var directionsDisplay;

@@ -127,10 +127,10 @@ return;
         boolean insertSuccess = nDao.insertUsers(user);
 
         if (insertSuccess) {
-           response.getWriter().write("ユーザー登録に成功しました。");
+           //response.getWriter().write("ユーザー登録に成功しました。");
            //main.jsp　未完了からコメントにしました。
-        	//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
-    		//dispatcher.forward(request, response);
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+    		dispatcher.forward(request, response);
         } else {
             response.getWriter().write("ユーザー登録に失敗しました。");
         }
