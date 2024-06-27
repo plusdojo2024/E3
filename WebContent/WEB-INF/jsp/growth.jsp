@@ -22,13 +22,13 @@
 	<body>
 		<div class="tabs">
 			<input id="one" type="radio" name="tab_item" checked>
-			<label class="tab_item" for="one">　　</label>
+			<label class="tab_item" for="one">個別</label>
 			<input id="all" type="radio" name="tab_item">
- 			<label class="tab_item" for="all">　　</label>
+ 			<label class="tab_item" for="all">一覧</label>
 
 			<div class="tab_content" id="one_content">
 				<div class="tab_content_description">
-				
+
 					<!-- カルーセル開始 -->
 					<div class="c-carousel">
 						<!-- ラジオボタン設定 -->
@@ -40,7 +40,7 @@
 						<div class="c-carousel__main">
 						<!-- 切り替えボタン -->
 							<div class="c-carousel__main-control">
-							   
+
 								<div class="c-carousel__main-control-item">
 									<label class="c-carousel__btn-next-main" for="carousel-main-2">
 										<img class="c-image-arrow" src="/E3/img/toRight.png" width="30px" alt=""/>
@@ -50,11 +50,11 @@
 									<label class="c-carousel__btn-prev-main" for="carousel-main-1">
 										<img class="c-image-arrow" src="/E3/img/toLeft.png" width="30px" alt=""/>
 									</label>
-									<c:if test="${totalCalories >= 500}">
+									<!--<c:if test="${totalCalories >= 500}">-->
 										<label class="c-carousel__btn-next-main" for="carousel-main-3">
 											<img class="c-image-arrow" src="/E3/img/toRight.png" width="30px" alt=""/>
 										</label>
-										</c:if>	
+										<!--</c:if>-->
 								</div>
 								<div class="c-carousel__main-control-item">
 									<label class="c-carousel__btn-prev-main" for="carousel-main-2">
@@ -74,7 +74,7 @@
 										<label class="c-carousel__btn-next-main" for="carousel-main-5">
 											<img class="c-image-arrow" src="/E3/img/toRight.png" width="30px" alt=""/>
 										</label>
-									</c:if>	
+									</c:if>
 								</div>
 								<div class="c-carousel__main-control-item">
 									<label class="c-carousel__btn-prev-main" for="carousel-main-4">
@@ -89,14 +89,7 @@
 									<p class="evolevel">第1段階</p>
 								</div>
 								<div class="c-carousel__main-item">
-									<c:choose>
-										<c:when test="${totalCalories >= 500}">
-											<img class="c-carousel__main-image2" src="/E3/img/子猫背景透過.gif">
-										</c:when>
-										<c:otherwise>
-											<img class="c-carousel__main-image_secret" src="/E3/img/はてな.png" alt="secret" height="300px">
-										</c:otherwise>
-									</c:choose>
+									<img class="c-carousel__main-image2" src="/E3/img/子猫背景透過.gif" alt="猫">
 									<p class="evolevel">第2段階</p>
 								</div>
 								<div class="c-carousel__main-item">
@@ -140,7 +133,7 @@
 			</div>
 			<div class="tab_content" id="all_content">
 				<div class="tab_content_description">
-					 
+					 <img src="/E3/img/e3_growth_all.png" height="400px" >
 				</div>
 			</div>
 

@@ -10,14 +10,14 @@
 	<link rel="stylesheet" href="/E3/css/graph.css">
     <title>ふぃたごっち | 活動記録</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
 </head>
 <body>
 <header>
 		<div class="header">
 			<a href="/E3/MainServlet"><img src="/E3/img/TOPcopy.png"></a>
 			<div class="title">
-				<input type="text" name="user_name" value="{user_name}" readonly="readonly">さんの<br>
+				<input type="text" name="user_name" value="佐藤歩" readonly="readonly">さんの<br>
 				活動記録
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 	        	</div>
 	        </div>
 	    </div>
-		
+
 <div class="graph_back"><!-- graph -->
 	<div class="exchange_buttons">
 		<button id="weekButton" onclick="showTab('week')" class="active-button exchange_button">週</button>
